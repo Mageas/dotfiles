@@ -305,6 +305,18 @@ I set splits to default to opening on the right using 'prefer-horizontal-split'.
 #+END_SRC
 
 
+* EVIL
+#+BEGIN_SRC emacs-lisp
+(fset 'evil-visual-update-x-selection 'ignore)
+#+END_SRC
+
+
+* GPG
+#+BEGIN_SRC emacs-lisp
+(setenv "SSH_AUTH_SOCK" "/run/user/1000/gnupg/S.gpg-agent.ssh")
+#+END_SRC
+
+
 * RUST
 #+BEGIN_SRC emacs-lisp
 (setq lsp-lens-enable t)
