@@ -1,4 +1,3 @@
 --target=$HOME
 --no-folding
 --verbose
---ignore README.md
