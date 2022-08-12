@@ -1,0 +1,1 @@
+-f bestaudio[ext!=webm]/best[ext!=webm] -ciw -o '~/Videos/youtube-dl/%(title)s.%(ext)s' -v --extract-audio --audio-quality 0 --audio-format mp3

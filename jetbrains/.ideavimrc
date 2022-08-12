@@ -1,0 +1,61 @@
+" general {{{
+set clipboard=unnamedplus
+set nobackup
+set noswapfile
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+autocmd BufWritePre * %s/\s\+$//e
+" }}}
+
+" split {{{
+
+set splitbelow
+set splitright
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" }}}
+
+" search {{{
+
+set incsearch
+set nohlsearch
+
+set scrolloff=10
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+nnoremap S :%s//g<Left><Left>
+
+"}}}
+
+" remap {{{
+
+:imap ii <Esc>
+
+let mapleader = ","
+let g:mapleader = ","
+
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+nnoremap c "_c
+nnoremap C "_C
+
+nnoremap <leader>d "+d
+nnoremap <leader>D "+D
+vnoremap <leader>d "+d
+nnoremap <leader>c "+c
+nnoremap <leader>C "+C
+
+" }}}
