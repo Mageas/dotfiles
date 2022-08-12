@@ -1,4 +1,4 @@
 --target=$HOME
 --no-folding
 --verbose
---ignore gitconfig
+--ignore README.md
