@@ -1,34 +1,58 @@
-# Screen - CVT
-xrandr --output DP-0 --mode "2560x1440" --primary --output DP-4 --mode "1920x1080" --rate 165 --left-of DP-0
+# Set the resolution and the refresh rate of the screens
+if [ -x "$(command -v xrandr)" ]; then
+    xrandr --output DP-0 --mode "2560x1440" --primary --output DP-4 --mode "1920x1080" --rate 165 --left-of DP-0
+fi
 
-# Xresources
-[[ -f ~/.config/Xresources ]] && xrdb -merge -I$HOME ~/.config/Xresources
+# Load Xresources
+if [[ -f ~/.config/Xresources ]]; then
+    xrdb -merge -I$HOME ~/.config/Xresources
+fi
 
-# Compositor
-picom &
+# Disable the screen saver
+if [ -x "$(command -v xset)" ]; then
+    xset s off -dpms
+fi
 
-# Screen saver
-xset s off -dpms
+# Start the compositor
+if [ -x "$(command -v picom)" ]; then
+    picom &
+fi
 
-# Status bar
-statusbar &
+# Set the wallpaper
+if [ -x "$(command -v feh)" ]; then
+    feh --bg-fill /home/$USER/.config/wallpaper/wallpaper.jpg &
+fi
 
-# Dunst
-/usr/bin/dunst &
+# Packages
+if [ -x "$(command -v statusbar)" ]; then
+    statusbar &
+fi
 
-# Wallpaper
-feh --bg-fill /home/$USER/.config/wallpaper/wallpaper.jpg &
+if [ -x "$(command -v dunst)" ]; then
+    dunst &
+fi
 
-# Redshift
-redshift &
+if [ -x "$(command -v redshift)" ]; then
+    redshift &
+fi
 
-# Sxhkd
-sxhkd &
+if [ -x "$(command -v sxhkd)" ]; then
+    sxhkd &
+fi
 
-# Doom
-/usr/bin/emacs --daemon &
+if [ -x "$(command -v emacs)" ]; then
+    emacs --daemon &
+fi
 
 # Applications
-firefox &
-discord &
-revolt &
+if [ -x "$(command -v firefox)" ]; then
+    firefox &
+fi
+
+if [ -x "$(command -v discord)" ]; then
+    discord &
+fi
+
+if [ -x "$(command -v revolt)" ]; then
+    revolt &
+fi
