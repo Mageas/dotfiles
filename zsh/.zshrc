@@ -23,10 +23,6 @@ autoload -Uz compinit
 compinit
 _comp_options+=(globdots)   # Include hidden files.
 
-# Spaceship
-autoload -U promptinit; promptinit
-prompt spaceship
-
 # gitlab.com/dwt1/shell-color-scripts
 # sh-colorscript random
 
@@ -38,6 +34,7 @@ fi
 
 
 # Plugins
+source ~/.config/zsh/zsh-spaceship/spaceship.zsh
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source ~/.config/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
