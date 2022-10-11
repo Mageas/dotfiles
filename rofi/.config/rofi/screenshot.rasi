@@ -1,0 +1,29 @@
+/*-*- mode: css; -*-*/
+@import "launcher.rasi"
+
+configuration {
+    show-icons:                  false;
+}
+
+window {
+    /* properties for window widget */
+    width:                       500px;
+    height:                      374px;
+}
+
+mainbox {
+    children:                    [ "screenshot-image", "listbox" ];
+}
+
+screenshot-image {
+    expand:                      false;
+    margin: 10px 10px 0px 10px;
+    padding: 100px;
+    border-radius:               @bd-radius;
+    background-color:            transparent;
+    background-image:            url("/tmp/screenshot.png", width);
+}
+
+element {
+    padding:                     12px;
+}
