@@ -6,7 +6,7 @@ configuration {
 }
 
 window {
-    height:                      266px;
+    height:                      167px;
 }
 
 mainbox {
