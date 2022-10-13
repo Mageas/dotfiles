@@ -11,10 +11,10 @@ super + e
 	alacritty -e "joshuto_window"
 
 alt + F1
-	dm-screenshot
+	~/.config/rofi/screenshot
 
 alt + F2
-	dm-videos
+	~/.config/rofi/video
 
 alt + F3
 	dm-easyeffects
