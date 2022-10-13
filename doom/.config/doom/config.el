@@ -129,6 +129,10 @@ List of keybindings (SPC h b b)")
 (map! :leader
       :desc "Clone indirect buffer other window" "b c" #'clone-indirect-buffer-other-window)
 
+(fset 'evil-visual-update-x-selection 'ignore)
+
+(setenv "SSH_AUTH_SOCK" "/run/user/1000/gnupg/S.gpg-agent.ssh")
+
 (setq lsp-lens-enable t)
 (setq lsp-lens-place-position 'above-line)
 
