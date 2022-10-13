@@ -15,6 +15,7 @@ rofi_cmd() {
 
 choice=$(echo -e "${options}" | rofi_cmd)
 
+[ -z "${choice}" ] && exit
 [ "$(rofi_confirm)" != "Yes" ] && exit
 
 case "${choice}" in
