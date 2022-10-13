@@ -26,7 +26,7 @@ alt + F10
 	dm-umount
 
 alt + F12
-	dm-shutdown
+	~/.config/rofi/powermenu
 
 F10
 	dwm-volume toggle; kill -44 $(pidof dwmblocks)
