@@ -19,12 +19,6 @@ alt + F2
 alt + F3
 	dm-easyeffects
 
-alt + F9
-	dm-mount
-
-alt + F10
-	dm-umount
-
 alt + F12
 	~/.config/rofi/powermenu
 
