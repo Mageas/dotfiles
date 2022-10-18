@@ -17,7 +17,7 @@ alt + F2
 	~/.config/rofi/video
 
 alt + F3
-	dm-easyeffects
+	~/.config/rofi/task_manager
 
 alt + F12
 	~/.config/rofi/powermenu
