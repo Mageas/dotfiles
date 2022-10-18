@@ -1,3 +1,8 @@
+#!/bin/env sh
+
+# Render java applications
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Set the resolution and the refresh rate of the screens
 if [ -x "$(command -v xrandr)" ]; then
     xrandr --output DisplayPort-0 --mode "2560x1440" --primary --output DisplayPort-1 --mode "1920x1080" --rate 165 --left-of DisplayPort-0
