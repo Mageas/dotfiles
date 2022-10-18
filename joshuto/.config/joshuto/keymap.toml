@@ -69,7 +69,7 @@ keymap = [
 	{ keys = [ "f", "t" ],		command = ":touch " },
 
 	{ keys = [ "v" ],			command = "select --toggle=true" },
-	{ keys = [ "t" ],			command = "select --all=true --toggle=true" },
+	{ keys = [ "V" ],			command = "select --all=true --toggle=true" },
 
 	{ keys = [ "w" ],			command = "show_tasks --exit-key=w" },
 	{ keys = [ "b", "b" ],		command = "bulk_rename" },
