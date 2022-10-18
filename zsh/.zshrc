@@ -23,15 +23,11 @@ autoload -Uz compinit
 compinit
 _comp_options+=(globdots)   # Include hidden files.
 
-# gitlab.com/dwt1/shell-color-scripts
-# sh-colorscript random
-
 # GPG for SSH
 unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
-
 
 # Plugins
 source ~/.config/zsh/zsh-spaceship/spaceship.zsh
@@ -40,4 +36,7 @@ source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/
 source ~/.config/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Spark
-sleep 0.03; echo; echo; seq 1 $COLUMNS | sort -R | spark | lolcat; echo; echo;
+#sleep 0.03; echo; echo; seq 1 $COLUMNS | sort -R | spark | lolcat; echo; echo;
+
+# gitlab.com/dwt1/shell-color-scripts
+colorscript random
