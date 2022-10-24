@@ -18,6 +18,10 @@ if [ -x "$(command -v xset)" ]; then
     xset s off -dpms
 fi
 
+if [ -x "$(command -v /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1)" ]; then
+    /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+fi
+
 # Start the compositor
 if [ -x "$(command -v picom)" ]; then
     picom &
