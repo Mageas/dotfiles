@@ -1,5 +1,8 @@
 #!/bin/env sh
 
+# PATH
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin
+
 # Render java applications
 export _JAVA_AWT_WM_NONREPARENTING=1
 
@@ -33,8 +36,8 @@ if [ -x "$(command -v feh)" ]; then
 fi
 
 # Packages
-if [ -x "$(command -v ~/.local/bin/statusbar)" ]; then
-    ~/.local/bin/statusbar &
+if [ -x "$(command -v statusbar)" ]; then
+    statusbar &
 fi
 
 if [ -x "$(command -v dunst)" ]; then
