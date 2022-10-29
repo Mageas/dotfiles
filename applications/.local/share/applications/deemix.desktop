@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Deemix
+Exec=deemix-gui.AppImage
+Terminal=false
+Type=Application
+Icon=deemix
+Comment=deemix is a barebone deezer downloader library built from the ashes of Deezloader Remix
