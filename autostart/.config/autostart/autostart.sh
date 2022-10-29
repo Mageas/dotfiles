@@ -33,8 +33,8 @@ if [ -x "$(command -v feh)" ]; then
 fi
 
 # Packages
-if [ -x "$(command -v statusbar)" ]; then
-    statusbar &
+if [ -x "$(command -v ~/.local/bin/statusbar)" ]; then
+    ~/.local/bin/statusbar &
 fi
 
 if [ -x "$(command -v dunst)" ]; then
