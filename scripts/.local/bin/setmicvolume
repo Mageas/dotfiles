@@ -1,0 +1,2 @@
+#!/bin/sh
+pactl set-source-volume $(pactl list short sources | grep ${2:-PnP} | awk '{print $1}') ${1:-60}%
