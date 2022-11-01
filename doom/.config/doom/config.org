@@ -288,7 +288,8 @@ The standard Emacs keybinding for comment-line is 'SPC o p'.
 
 #+BEGIN_SRC emacs-lisp
 (after! treemacs
-    (setq treemacs-follow-after-init t))
+    (setq treemacs-follow-after-init t)
+    (treemacs-follow-mode 1))
 #+END_SRC
 
 

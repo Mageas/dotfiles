@@ -120,7 +120,8 @@ List of keybindings (SPC h b b)")
       doom-modeline-persp-icon t) ;; adds folder icon next to persp name
 
 (after! treemacs
-    (setq treemacs-follow-after-init t))
+    (setq treemacs-follow-after-init t)
+    (treemacs-follow-mode 1))
 
 (defun prefer-horizontal-split ()
   (set-variable 'split-height-threshold nil t)
