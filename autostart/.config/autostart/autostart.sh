@@ -8,7 +8,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Set the resolution and the refresh rate of the screens
 if [ -x "$(command -v xrandr)" ]; then
-    xrandr --output DisplayPort-0 --mode "2560x1440" --primary --output DisplayPort-1 --mode "1920x1080" --rate 165 --left-of DisplayPort-0
+    xrandr --output DisplayPort-0 --mode "2560x1440" --pos "1920x0" --rate 240 --primary --output DisplayPort-1 --mode "1920x1080" --pos "0x180" --rate 165
 fi
 
 # Load Xresources
