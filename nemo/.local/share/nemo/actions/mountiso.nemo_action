@@ -1,0 +1,8 @@
+[Nemo Action]
+Name=Mount
+Comment=Mount a File without root
+Icon-Name=media-optical
+Exec=nemo-actions-iso-mount.sh %F
+Selection=S
+Extensions=iso;nrg;bin;img;mdf;
+Mimetypes=*/*
