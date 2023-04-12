@@ -42,13 +42,6 @@ png.inherit	  = "image_default"
 ppm.inherit	  = "image_default"
 webp.inherit  = "image_default"
 
-#svg.app_list	= [
-#	{ command = "inkview", fork = true, silent = true },
-#	{ command = "inkscape", fork = true, silent = true } ]
-#tiff.app_list	= [
-#	{ command = "qimgv", fork = true, silent = true },
-#	{ command = "krita", fork = true, silent = true } ]
-
 ## audio formats
 flac.inherit = "audio_default"
 m4a.inherit	 = "audio_default"
@@ -138,13 +131,11 @@ zip.app_list	= [
 	{ command = "unzip", confirm_exit = true },
 	{ command = "file-roller", fork = true, silent = true } ]
 
-# misc formats
-#aup.app_list	= [
-#	{ command = "audacity", fork = true, silent = true } ]
-
+# audio and video formats
 m3u.app_list	= [
 	{ command = "mpv" } ]
 
+# office formats
 odt.inherit	= "libreoffice_default"
 odf.inherit	= "libreoffice_default"
 ods.inherit	= "libreoffice_default"
@@ -157,20 +148,11 @@ xlsx.inherit = "libreoffice_default"
 ppt.inherit	 = "libreoffice_default"
 pptx.inherit = "libreoffice_default"
 
+# other formats
 pdf.inherit	= "reader_default"
-
-#kra.app_list = [
-#	{ command = "krita", fork = true, silent = true }
-#]
-#kdenlive.app_list = [
-#	{ command = "kdenlive", fork = true, silent = true }
-#]
-#
-#tex.app_list	= [
-#	{ command = "micro" },
-#	{ command = "gedit", fork = true, silent = true },
-#	{ command = "bat", confirm_exit = true },
-#	{ command = "pdflatex" } ]
 
 torrent.app_list = [
 	{ command = "qbittorrent" } ]
+
+dlc.app_list	= [
+	{ command = "jdownloader", args = [ "-co" ], fork = true, silent = true } ]
