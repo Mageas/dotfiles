@@ -322,12 +322,20 @@ fi
 : ${ZVM_CURSOR_STYLE_ENABLED:=true}
 
 # All the extra commands
-zvm_before_init_commands=()
-zvm_after_init_commands=()
-zvm_before_select_vi_mode_commands=()
-zvm_after_select_vi_mode_commands=()
-zvm_before_lazy_keybindings_commands=()
-zvm_after_lazy_keybindings_commands=()
+commands_array_names=(
+  zvm_before_init_commands
+  zvm_after_init_commands
+  zvm_before_select_vi_mode_commands
+  zvm_after_select_vi_mode_commands
+  zvm_before_lazy_keybindings_commands
+  zvm_after_lazy_keybindings_commands
+)
+for commands_array_name in $commands_array_names; do
+  # Ensure commands set to an empty array, if not already set.
+  if [[ -z "${(P)commands_array_name}" ]]; then
+    typeset -g -a $commands_array_name
+  fi
+done
 
 # All the handlers for switching keyword
 zvm_switch_keyword_handlers=(
@@ -628,7 +636,7 @@ function zvm_escape_non_printed_characters() {
       str="${str}^${c}"
     elif [[ "$c" == '' ]]; then
       str="${str}^?"
-    elif [[ "$c" == ' ' ]]; then
+    elif [[ "$c" == '' ]]; then
       str="${str}^@"
     else
       str="${str}${c}"
@@ -3145,9 +3153,7 @@ function zvm_zle-line-pre-redraw() {
   if [[ -n $TMUX ]]; then
     zvm_update_cursor
     # Fix display is not updated in the terminal of IntelliJ IDE.
-    # We should update display only when the last widget isn't a
-    # completion widget
-    [[ $LASTWIDGET =~ 'complet' ]] || zle redisplay
+    [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]] && zle redisplay
   fi
   zvm_update_highlight
   zvm_update_repeat_commands
@@ -3372,7 +3378,6 @@ function zvm_init() {
   for s in ${(s..)^:-'()[]{}<>'}; do
     surrounds+=($s)
   done
-
   # Append quotes
   for s in {\',\",\`,\ ,'^['}; do
     surrounds+=($s)
@@ -3450,4 +3455,3 @@ case $ZVM_INIT_MODE in
   sourcing) zvm_init;;
   *) precmd_functions+=(zvm_init);;
 esac
-
