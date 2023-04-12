@@ -5,6 +5,7 @@ scrolloff = 10
 mouse = false
 middle-click-paste = false
 line-number = "relative"
+shell = ["zsh", "-c"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -19,3 +20,6 @@ display-messages = true
 
 [editor.whitespace.render]
 tab = "all"
+
+[keys.normal]
+X = "extend_line_above"
