@@ -65,6 +65,4 @@ if [ -x "$(command -v discord)" ]; then
     discord &
 fi
 
-if [ -x "$(command -v revolt)" ]; then
-    revolt &
-fi
+flatpak run im.riot.Riot &
