@@ -9,6 +9,7 @@ green="#98be65"
 magenta="#c678dd"
 cyan="#46d9ff"
 teal="#4db5bd"
+yellow="#fef86c"
 
 _version() {
     v=$(uname -r)
@@ -19,7 +20,7 @@ _version() {
 }
 
 _cpu() {
-	v=$(grep -o "^[^ ]*" /proc/loadavg)
+    v=$(grep -o "^[^ ]*" /proc/loadavg)
     printf "^b${bg}^^c${red}^  "
     printf "^d^"
     printf "^c${red}^ ${v}%% "
@@ -64,13 +65,20 @@ _mullvad() {
     printf "^d^"
 }
 
+_language() {
+    l=$(xkblayout-state print %s)
+    [ "${l}" == "us" ] && return
+    printf "^c${yellow}^ ${l^^} "
+    printf "^d^"
+}
+
 interval=0
 while true; do
 
-	[ $(($interval % 300)) = 0 ] && _updates=$(_updates)
-	[ $(($interval % 300)) = 0 ] && _version=$(_version)
+    [ $(($interval % 300)) = 0 ] && _updates=$(_updates)
+    [ $(($interval % 300)) = 0 ] && _version=$(_version)
     [ $(($interval % 10)) = 0 ] && _mullvad=$(_mullvad)
     interval=$((interval + 1))
 
-    sleep 1 && xsetroot -name "${_version}$(_cpu)$(_ram)${_updates}$(_date)$(_clock)${_mullvad}"
+    sleep 1 && xsetroot -name "${_version}$(_cpu)$(_ram)${_updates}$(_date)$(_clock)${_mullvad}$(_language)"
 done
