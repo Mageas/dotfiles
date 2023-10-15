@@ -1,7 +1,7 @@
 # ❤ My dotfiles ❤
 
 My dotfiles for my little linux.
-I use the beautiful and majestic Arch Linux with DWM as my window manager.
+I use the beautiful and majestic Arch Linux.
 
 # Install my dotfiles
 
