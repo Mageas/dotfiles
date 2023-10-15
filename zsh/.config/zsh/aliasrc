@@ -20,25 +20,18 @@ alias \
         rm="rm -vI" \
         mkdir="mkdir -pv"
 
-# Git
-alias \
-        gs="git status" \
-        gsd="git status -vv" \
-        gb="git branch" \
-        gl="git log" \
-        gf="git fetch" \
-        ga="git add" \
-        gaa="git add -A" \
-        gc="git commit -m" \
-        gp="git push" \
-        gco="git checkout"
-
-# Docker
-alias \
-        dc="docker-compose" \
-        dps="docker ps" \
-        dpsa="docker ps -a" \
-        di="docker images"
+# # Git
+# alias \
+#         gs="git status" \
+#         gsd="git status -vv" \
+#         gb="git branch" \
+#         gl="git log" \
+#         gf="git fetch" \
+#         ga="git add" \
+#         gaa="git add -A" \
+#         gc="git commit -m" \
+#         gp="git push" \
+#         gco="git checkout"
 
 # SSH
 alias \

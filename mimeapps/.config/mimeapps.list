@@ -1,6 +1,24 @@
 [Default Applications]
-inode/directory=pcmanfm.desktop
-application/json=firefox.desktop
+text/plain=code.desktop
+text/css=code.desktop
+text/javascript=code.desktop
+text/xml=code.desktop
+text/markdown=code.desktop
+text/x-python=code.desktop
+text/x-c=code.desktop
+text/x-csharp=code.desktop
+text/x-java-source=code.desktop
+text/x-php=code.desktop
+application/json=code.desktop
+application/javascript=code.desktop
+application/xml=code.desktop
+application/x-javascript=code.desktop
+application/zip=org.gnome.FileRoller.desktop
+application/x-tar=org.gnome.FileRoller.desktop
+application/gzip=org.gnome.FileRoller.desktop
+application/vnd.rar=org.gnome.FileRoller.desktop
+application/x-7z-compressed=org.gnome.FileRoller.desktop
+inode/directory=nemo.desktop
 application/pdf=firefox.desktop
 text/html=firefox.desktop
 x-scheme-handler/http=firefox.desktop
