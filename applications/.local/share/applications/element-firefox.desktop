@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Element
+Comment=Opens Element in Firefox
+Exec=firefox --no-remote -P Element
+Icon=/home/mageas/.local/share/applications/element-firefox.png
+StartupNotify=true
+Terminal=false
+Type=Application
