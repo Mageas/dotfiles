@@ -1,3 +1,6 @@
+# Homebrew
+[[ "$(uname)" == "Darwin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Colors
 autoload -U colors && colors
 
@@ -14,8 +17,12 @@ setopt EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
 
 # Load aliases and binds if existent.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/bindrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/bindrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
+if [[ "$(uname)" == "Darwin" ]]; then
+    [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/darwin_aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/darwin_aliasrc"
+else
+    [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/bindrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/bindrc"
+    [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
+fi
 
 # PATH
 export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin
@@ -27,9 +34,15 @@ compinit
 _comp_options+=(globdots)   # Include hidden files.
 
 # GPG for SSH
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+if [[ "$(uname)" == "Darwin" ]]; then
+    export GPG_TTY=$(tty)
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    gpgconf --launch gpg-agent
+else
+    unset SSH_AGENT_PID
+    if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    fi
 fi
 
 # Plugins
