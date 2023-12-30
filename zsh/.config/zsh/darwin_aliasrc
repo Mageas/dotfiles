@@ -14,22 +14,20 @@ alias sync-gitea="rsync --progress -v --update 'login@gitea.heartnerds.org:/home
 alias sync-grocy="rsync --progress -v --update 'login@homeserver.mon-petit-serveur.net:/home/grocy-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Grocy"
 alias sync-all="echo '  => Syncing Grocy'; sync-grocy; echo '  => Syncing Bitwarden'; sync-bitwarden"
 
-alias sb-up='f() { 
+function sb_up_func() { 
     if [ -z "$1" ]; then 
         echo "Usage: sb-up <local:file/folder> [remote:destination]";
-        unset -f f;
         return 1;
     fi
     rsync -aHxv --numeric-ids --progress -v --update --bwlimit=100000 -e "ssh -p 22" "$1" netflox@yukon.usbx.me:/home/netflox/sync/uploads/${2:-""};
-    unset -f f;
-}; f'
+}
+alias sb-up='sb_up_func'
 
-alias sb-dl='f() { 
+function sb_dl_func() { 
     if [ -z "$1" ]; then 
         echo "Usage: sb-dl <remote:file/folder> [local:destination]";
-        unset -f f;
         return 1;
     fi
     rsync -aHxv --numeric-ids --progress -v --update --bwlimit=100000 -e "ssh -p 22" netflox@yukon.usbx.me:/home/netflox/sync/downloads/$1 ${2:-"."};
-    unset -f f;
-}; f'
+}
+alias sb-dl='sb_dl_func'
