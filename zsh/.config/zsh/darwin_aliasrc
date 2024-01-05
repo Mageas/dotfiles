@@ -19,7 +19,7 @@ function sb_up_func() {
         echo "Usage: sb-up <local:file/folder> [remote:destination]";
         return 1;
     fi
-    rsync -aHxv --numeric-ids --progress -v --update --bwlimit=100000 -e "ssh -p 22" "$1" netflox@yukon.usbx.me:/home/netflox/sync/uploads/${2:-""};
+    rsync -aHxv --numeric-ids --progress -v --update --bwlimit=100000 -e "ssh -p 22" "$1" "netflox@yukon.usbx.me:/home/netflox/sync/uploads/${2:-""}";
 }
 alias sb-up='sb_up_func'
 
@@ -28,6 +28,6 @@ function sb_dl_func() {
         echo "Usage: sb-dl <remote:file/folder> [local:destination]";
         return 1;
     fi
-    rsync -aHxv --numeric-ids --progress -v --update --bwlimit=100000 -e "ssh -p 22" netflox@yukon.usbx.me:/home/netflox/sync/downloads/$1 ${2:-"."};
+    rsync -aHxv --numeric-ids --progress -v --update --bwlimit=100000 -e "ssh -p 22" "netflox@yukon.usbx.me:/home/netflox/sync/downloads/$1" "${2:-"."}";
 }
 alias sb-dl='sb_dl_func'
