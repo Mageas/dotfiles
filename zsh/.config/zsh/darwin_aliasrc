@@ -12,7 +12,8 @@ alias yt="yt-dlp --format '(bestvideo[vcodec^=av01][height>=4320][fps>30]/bestvi
 alias sync-bitwarden="rsync --progress -v --update 'login@bitwarden.heartnerds.org:/home/vaultwarden-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Bitwarden"
 alias sync-gitea="rsync --progress -v --update 'login@gitea.heartnerds.org:/home/gitea-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Gitea"
 alias sync-grocy="rsync --progress -v --update 'login@homeserver.mon-petit-serveur.net:/home/grocy-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Grocy"
-alias sync-all="echo '  => Syncing Grocy'; sync-grocy; echo '  => Syncing Bitwarden'; sync-bitwarden"
+alias sync-amandi-nett="rsync --progress -v --update 'login@homeserver.mon-petit-serveur.net:/home/amandi-nett-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Amandi-Nett"
+alias sync-all="echo '  => Syncing Grocy'; sync-grocy; echo '  => Syncing Bitwarden'; sync-bitwarden; echo '  => Syncing Amandi-Nett'; sync-amandi-nett"
 
 function sb_up_func() { 
     if [ -z "$1" ]; then 
