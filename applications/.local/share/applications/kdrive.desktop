@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=kDrive
+Exec=/home/mageas/.local/bin/kDrive.AppImage
+Terminal=false
+Type=Application
+Icon=kdrive
+Comment=Collaborate, store, and share your data securely.
