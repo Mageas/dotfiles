@@ -2,9 +2,10 @@
 Description=easyeffects autostart config
 
 [Service]
+Environment=HOME=%h
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/easyeffects --gapplication-service
+ExecStart=%h/.nix-profile/bin/easyeffects --gapplication-service
 
 [Install]
 WantedBy=default.target
