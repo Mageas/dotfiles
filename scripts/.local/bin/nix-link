@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# This script synchronizes Nix applications and icons to display in Gnome.
+# It creates symbolic links in the user's local directories.
+
+# Steps:
+# 1. Synchronize application files by creating symbolic links in ~/.local/share/applications.
+# 2. Synchronize icons of different sizes: 256x256, 512x512, scalable, symbolic.
+
+mkdir -p ~/.local/share/applications
+for file in ~/.nix-profile/share/applications/*; do
+  if [ ! -e ~/.local/share/applications/$(basename "${file}") ]; then
+    ln -s "${file}" ~/.local/share/applications/
+    echo "link: ${file}"
+  fi
+done
+
+sizes=("256x256" "512x512" "scalable" "symbolic")
+for size in "${sizes[@]}"; do
+  mkdir -p ~/.local/share/icons/hicolor/${size}/apps
+
+  for file in ~/.nix-profile/share/icons/hicolor/${size}/apps/*; do
+    if [ ! -e ~/.local/share/icons/hicolor/${size}/apps/$(basename "${file}") ]; then
+      ln -s "${file}" ~/.local/share/icons/hicolor/${size}/apps/
+      echo "link: ${file}"
+    fi
+  done
+done
