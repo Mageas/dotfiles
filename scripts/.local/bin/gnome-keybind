@@ -1,0 +1,197 @@
+#!/bin/bash
+
+ENTRY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+ENTRY_NAMESPACE="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding"
+
+function get_current_entries() {
+    gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings | sed 's/.*\[\(.*\)\]/\1/'
+}
+
+function add_entry() {
+    local entry=$(format_entry $1)
+
+    local current_entries=$(get_current_entries)
+    [[ "$(is_entry_exists "${entry}" "${current_entries}")" == "true" ]] && error "slug already exists"
+    [[ -z "${current_entries}" ]] && echo "[${entry}]" || echo "[${current_entries}, ${entry}]"
+}
+
+function remove_entry() {
+    local entry=$(format_entry $1)
+    local escaped_entry=$(printf '%s\n' "$entry" | sed 's/[\/&]/\\&/g')
+    
+    local current_entries=$(get_current_entries)
+    [[ "$(is_entry_exists "${entry}" "${current_entries}")" != "true" ]] && error "slug does not exists"
+    echo "[$(echo "$current_entries" | sed -E "s/,? *${escaped_entry} *//; s/^, //; s/, $//")]"
+}
+
+function set_entries() {
+    local entries="${1}"
+
+    gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "${entries}"
+}
+
+function format_entry() {
+    echo "'${ENTRY_PATH}/${1%/}/'"
+}
+
+function is_entry_exists() {
+    local entry="${1}"
+    local entries="${2}"
+
+    [[ "${entries}" == *"${entry}"* ]] && echo "true" || echo "false"
+}
+
+
+
+function list_custom_keybinds() {
+    current_entries=$(get_current_entries)
+
+    IFS=', ' read -r -a current_entries <<< "$current_entries"
+
+    for entry in "${current_entries[@]}"; do
+        local entry=${entry//\'/}
+        local slug="$(echo "$entry" | awk -F'/' '{print $(NF-1)}')"
+        local name="$(gsettings get "${ENTRY_NAMESPACE}":"${entry}" name)"
+        local command="$(gsettings get "${ENTRY_NAMESPACE}":"${entry}" command)"
+        local binding="$(gsettings get "${ENTRY_NAMESPACE}":"${entry}" binding)"
+
+        echo "${slug} ${name} ${command} ${binding}"
+    done
+}
+
+function add_custom_keybind() {
+    local slug="${1}"
+    local name="${2}"
+    local command="${3}"
+    local binding="${4}"
+
+    local entries=$(add_entry "${slug}")
+    [[ ! -n "${entries}" ]] && exit 1
+    set_entries "$entries"
+
+    local entry=$(format_entry "${slug}")
+    local path=${entry//\'/}
+
+    gsettings set "${ENTRY_NAMESPACE}":"${path}" name "\"${name}\""
+    gsettings set "${ENTRY_NAMESPACE}":"${path}" command "\"${command}\""
+    gsettings set "${ENTRY_NAMESPACE}":"${path}" binding "\"${binding}\""
+}
+
+function update_custom_keybind() {
+    local slug="${1}"
+    local name="${2}"
+    local command="${3}"
+    local binding="${4}"
+
+    local entry=$(format_entry "${slug}")
+    local path=${entry//\'/}
+
+    local current_entries=$(get_current_entries)
+    [[ "$(is_entry_exists "${entry}" "${current_entries}")" != "true" ]] && error "slug does not exists"
+
+    [[ -n "$name" ]] && gsettings set "${ENTRY_NAMESPACE}":"${path}" name "\"${name}\""
+    [[ -n "$command" ]] && gsettings set "${ENTRY_NAMESPACE}":"${path}" command "\"${command}\""
+    [[ -n "$binding" ]] && gsettings set "${ENTRY_NAMESPACE}":"${path}" binding "\"${binding}\""
+}
+
+function remove_custom_keybind() {
+    local slug="${1}"
+
+    local entries=$(remove_entry "${slug}")
+    [[ ! -n "${entries}" ]] && exit 1
+    set_entries "$entries"
+
+    local entry=$(format_entry "${slug}")
+    local path=${entry//\'/}
+
+    gsettings set "${ENTRY_NAMESPACE}":"${path}" name "\"\""
+    gsettings set "${ENTRY_NAMESPACE}":"${path}" command "\"\""
+    gsettings set "${ENTRY_NAMESPACE}":"${path}" binding "\"\""
+}
+
+
+function error() {
+    echo "${1}" >&2
+    exit 1
+}
+
+function usage() {
+  cat <<EOF
+Usage: $(basename "$0") <command> [options]
+
+Commands:
+    list                              List all custom keybinds
+    add    -s <slug> -n <name> -c <command> -k <keybind>
+                                      Add a new custom keybind
+    update -s <slug> [-n <name>] [-c <command>] [-k <keybind>]
+                                      Update an existing custom keybind
+    remove -s <slug>                  Remove a custom keybind
+
+Options:
+    -s, --slug <slug>                 Unique identifier for the custom keybind
+    -n, --name <name>                 Display name for the custom keybind
+    -c, --command <command>           Command to execute when the keybind is triggered
+    -k, --keybind <keybind>           Key combination to trigger the custom keybind
+
+Examples:
+    $(basename "$0") list
+    $(basename "$0") add -s "my-keybind" -n "My Keybind" -c "notify-send 'Hello'" -b "<Super>k"
+    $(basename "$0") update -s "my-keybind" -n "Updated Keybind"
+    $(basename "$0") remove -s "my-keybind"
+EOF
+  exit 1
+}
+
+function args() {
+    local COMMAND="${1}"
+    shift
+
+    while [[ $# -gt 0 ]]; do
+        case "${1}" in
+        -s | --slug)
+            shift
+            ARG_SLUG="${1}"
+            ;;
+        -n | --name)
+            shift
+            ARG_NAME="${1}"
+            ;;
+        -c | --command)
+            shift
+            ARG_COMMAND="${1}"
+            ;;
+        -k | --keybind)
+            shift
+            ARG_KEYBIND="${1}"
+            ;;
+        *)
+            [[ ! -z "${1}" ]] && echo "Invalid option: ${1}" || echo "Missing arguments"
+            usage
+            ;;
+        esac
+        shift
+    done
+
+    case ${COMMAND} in
+        list)
+            list_custom_keybinds
+            ;;
+        add)
+            [[ -z ${ARG_SLUG} || -z ${ARG_NAME} || -z ${ARG_COMMAND} || -z ${ARG_KEYBIND} ]] && usage
+            add_custom_keybind "${ARG_SLUG}" "${ARG_NAME}" "${ARG_COMMAND}" "${ARG_KEYBIND}"
+            ;;
+        update)
+            [[ -z ${ARG_SLUG} ]] && usage
+            update_custom_keybind "${ARG_SLUG}" "${ARG_NAME}" "${ARG_COMMAND}" "${ARG_KEYBIND}"
+            ;;
+        remove)
+            [[ -z ${ARG_SLUG} ]] && usage
+            remove_custom_keybind "${ARG_SLUG}"
+            ;;
+        *)
+            usage
+            ;;
+    esac
+}
+
+args "$@"
