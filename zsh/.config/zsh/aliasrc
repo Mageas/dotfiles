@@ -20,10 +20,8 @@ alias ytm="yt-dlp --format '(bestaudio[acodec^=opus]/bestaudio)/best' --verbose 
 alias ytmp3="yt-dlp --format '(bestaudio[acodec^=opus]/bestaudio)/best' --verbose --force-ipv4 --sleep-requests 1 --sleep-interval 5 --max-sleep-interval 30 --ignore-errors --no-continue --no-overwrites --add-metadata --parse-metadata '%(title)s:%(meta_title)s' --parse-metadata '%(uploader)s:%(meta_artist)s' --write-description --write-info-json --write-annotations --write-thumbnail --embed-thumbnail --extract-audio --check-formats --concurrent-fragments 5 --match-filter '!is_live & !live' --audio-format mp3 --output '~/Documents/Videos/youtube-dl/%(title)s - %(uploader)s.%(ext)s'"
 
 alias sync-bitwarden="rsync --progress -v --update 'login@bitwarden.heartnerds.org:/home/vaultwarden-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Bitwarden"
-alias sync-gitea="rsync --progress -v --update 'login@gitea.heartnerds.org:/home/gitea-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Gitea"
-alias sync-grocy="rsync --progress -v --update 'login@homeserver.mon-petit-serveur.net:/home/grocy-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Grocy"
-alias sync-amandi-nett="rsync --progress -v --update 'login@homeserver.mon-petit-serveur.net:/home/amandi-nett-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Amandi-Nett"
-alias sync-all="echo '  => Syncing Grocy'; sync-grocy; echo '  => Syncing Bitwarden'; sync-bitwarden; echo '  => Syncing Amandi-Nett'; sync-amandi-nett"
+alias sync-amandi-nett="rsync --progress -v --update 'root@192.168.0.249:/home/amandi-nett-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Amandi-Nett"
+alias sync-all="echo '  => Syncing Bitwarden'; sync-bitwarden; echo '  => Syncing Amandi-Nett'; sync-amandi-nett"
 
 function sb_up_func() { 
     if [ -z "$1" ]; then 
