@@ -25,3 +25,6 @@ x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/about=firefox.desktop
 x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/stabilitymatrix=stabilitymatrix.desktop
+x-scheme-handler/discord-1221314350216646828=discord-1221314350216646828.desktop
+x-scheme-handler/discord-712465656758665259=discord-712465656758665259.desktop
