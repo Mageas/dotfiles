@@ -25,6 +25,7 @@ else
 fi
 
 # PATH
+export HSA_OVERRIDE_GFX_VERSION=10.3.0
 export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin
 export EDITOR="vim"
 
