@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Cursor
+Exec=/home/mageas/.local/bin/Cursor.AppImage
+Terminal=false
+Type=Application
+Icon=Cursor
+Comment=Collaborate, store, and share your data securely.
