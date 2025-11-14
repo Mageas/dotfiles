@@ -1,0 +1,97 @@
+@import "colors/colors.css";
+
+* {
+    border: none;
+    font-family: "SF Pro Display", "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @on_surface;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 10px 10px;
+}
+
+tooltip {
+    background: @background;
+    border: 1px solid rgba(100, 114, 125, 0.5);
+}
+
+tooltip label {
+    color: @on_surface;
+}
+
+#workspaces {
+    margin: 0 10px;
+    background-color: transparent;
+    transition: all 200ms ease-in-out;
+}
+
+#workspaces button {
+    background-color: @secondary;
+    padding: 0 7px;
+    margin: 0 2px;
+    border-radius: 5px;
+    transition: all 200ms ease-in-out;
+}
+
+#workspaces button.active {
+    background-color: @inverse_primary;
+    color: @on_surface;
+    padding: 0 15px;
+    border-radius: 100px;
+    transition: all 200ms ease-in-out;
+    font-weight: 700;
+}
+
+#workspaces button:hover {
+    color: @background;
+}
+
+/* #workspaces button {
+    padding: 5px 12px;
+    margin: 10px 3px;
+    background: @tertiary;
+    color: @on_tertiary;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    padding: 5px 16px;
+    background: @primary;
+    color: @on_primary;
+    border-radius: 100px;
+} */
+
+#clock,
+#battery,
+#pulseaudio,
+#network {
+    border-radius: 100px;
+    background-color: @primary;
+    color: #121212;
+    margin: 0 5px;
+    padding: 0px 15px;
+}
+
+#window {
+    margin: 0 5px;
+}
+
+#clock {
+    padding: 0 7px;
+    font-weight: 500;
+}
+
+#pulseaudio {
+    padding: 0 18px;
+}
