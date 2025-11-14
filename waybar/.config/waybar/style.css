@@ -75,7 +75,8 @@ tooltip label {
 #clock,
 #battery,
 #pulseaudio,
-#network {
+#network,
+#tray {
     border-radius: 100px;
     background-color: @primary;
     color: #121212;
@@ -94,4 +95,8 @@ tooltip label {
 
 #pulseaudio {
     padding: 0 18px;
+}
+
+#tray {
+    padding: 0 10px;
 }
