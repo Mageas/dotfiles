@@ -68,10 +68,11 @@
             ]
         },
         "scroll-step": 1,
-        "on-click": "pavucontrol",
         "ignored-sinks": [
             "Easy Effects Sink"
-        ]
+        ],
+        "on-click": "pavucontrol",
+        "on-click-right": "easyeffects"
     },
     "network": {
         "interface": "enp6s0",
