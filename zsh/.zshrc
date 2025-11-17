@@ -28,6 +28,7 @@ fi
 export HSA_OVERRIDE_GFX_VERSION=10.3.0
 export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin
 export EDITOR="vim"
+export GOPATH=$HOME/go
 
 # Autocomplete
 autoload -Uz compinit
@@ -50,6 +51,8 @@ fi
 # Plugins
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+export XCURSOR_SIZE=24
 
 # Starship
 eval "$(starship init zsh)"

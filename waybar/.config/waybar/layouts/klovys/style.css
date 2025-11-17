@@ -35,8 +35,8 @@ window#waybar {
 }
 
 #workspaces button.empty {
-    background-color: @surface_container_lowest;
-    color: @surface_container_lowest;
+    background-color: @surface_container_highest;
+    color: @surface_container_highest;
 }
 
 #workspaces button.active {
