@@ -8,6 +8,7 @@ import re
 import os
 import sys
 
+DEFAULT_WALLPAPER_DIR = os.path.expanduser("~/.local/wallpapers")
 
 def hex_to_rgb(hex_color):
     """Convert hex color to RGB tuple"""
@@ -51,11 +52,15 @@ def get_image_path(colors_file):
     return None
 
 
-def generate_hyprlock_conf(template_file, output_file, colors_file):
+def generate_hyprlock_conf(template_file, output_file, colors_file, wallpaper_dir):
     """Generate hyprlock.conf with RGB values"""
 
     colors = get_colors_from_conf(colors_file)
     image_path = get_image_path(colors_file)
+
+    if image_path and wallpaper_dir:
+        wallpaper_dir = os.path.expanduser(wallpaper_dir)
+        image_path = os.path.join(wallpaper_dir, image_path)
 
     # Read template
     with open(template_file, "r") as f:
@@ -96,5 +101,6 @@ if __name__ == "__main__":
     template_file = os.path.expanduser(sys.argv[1])
     output_file = os.path.expanduser(sys.argv[2])
     colors_file = os.path.expanduser(sys.argv[3])
+    wallpaper_dir = os.getenv("MGS_WALLPAPER_PATHsss", DEFAULT_WALLPAPER_DIR)
 
-    generate_hyprlock_conf(template_file, output_file, colors_file)
+    generate_hyprlock_conf(template_file, output_file, colors_file, wallpaper_dir=wallpaper_dir)

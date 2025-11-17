@@ -20,11 +20,22 @@ application/vnd.rar=org.gnome.FileRoller.desktop
 application/x-7z-compressed=org.gnome.FileRoller.desktop
 inode/directory=nemo.desktop
 application/pdf=firefox.desktop
-text/html=firefox.desktop
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop
+text/html=org.mozilla.firefox.desktop
+x-scheme-handler/http=org.mozilla.firefox.desktop
+x-scheme-handler/https=org.mozilla.firefox.desktop
 x-scheme-handler/about=firefox.desktop
 x-scheme-handler/unknown=firefox.desktop
 x-scheme-handler/stabilitymatrix=stabilitymatrix.desktop
 x-scheme-handler/discord-1221314350216646828=discord-1221314350216646828.desktop
 x-scheme-handler/discord-712465656758665259=discord-712465656758665259.desktop
+application/xhtml+xml=org.mozilla.firefox.desktop
+video/x-matroska=mpv.desktop
+video/mp4=mpv.desktop
+
+[Added Associations]
+x-scheme-handler/http=app.zen_browser.zen.desktop;org.mozilla.firefox.desktop;
+text/html=app.zen_browser.zen.desktop;org.mozilla.firefox.desktop;
+application/xhtml+xml=app.zen_browser.zen.desktop;org.mozilla.firefox.desktop;
+x-scheme-handler/https=app.zen_browser.zen.desktop;org.mozilla.firefox.desktop;
+video/x-matroska=mpv.desktop;
+video/mp4=mpv.desktop;

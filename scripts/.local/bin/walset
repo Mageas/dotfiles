@@ -1,5 +1,40 @@
 #!/bin/bash
 
-img=$1
+wallpaper_dir="${MGS_WALLPAPER_PATH:-${HOME}/.local/wallpapers}"
+wallpaper_dir="${MGS_WALLPAPER_PATH/#\~/$HOME}"
+width_percent=90
 
-matugen image "$img" &>/dev/null
+get_monitor_width() {
+  hyprctl -j monitors | jq -r '.[] | select(.focused==true) | .width / .scale' | awk -F'.' '{print $1}'
+}
+
+choose_wallpaper() {
+  local rofi_width_px=$1
+  for file in *.jpg *.png; do
+    echo -en "${file}\0icon\x1f${file}\n"
+  done | rofi -dmenu -p "Choose Wallpaper" -theme "~/.config/rofi/launchers/type-2/style-13.rasi" \
+             -theme-str "window { width: ${rofi_width_px}px; }"
+}
+
+main() {
+  local current_dir="$(pwd)"
+  cd "${wallpaper_dir}" || exit 1
+
+  IFS=$'\n'
+
+  local screen_width
+  screen_width=$(get_monitor_width)
+
+  local rofi_width=$(( screen_width * ${width_percent} / 100 ))
+
+  local selected_wall
+  selected_wall=$(choose_wallpaper "${rofi_width}")
+
+  if [[ -n "${selected_wall}" ]]; then
+    walset-backend "${selected_wall}"
+  fi
+
+  cd "${current_dir}" || exit 1
+}
+
+main

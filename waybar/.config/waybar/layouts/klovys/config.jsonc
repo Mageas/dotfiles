@@ -12,7 +12,6 @@
         "custom/media"
     ],
     "modules-right": [
-        "tray",
         "custom/dnf",
         "pulseaudio",
         "battery",
@@ -144,17 +143,7 @@
             "10": "10"
         },
         "persistent-workspaces": {
-            "DP-1": [
-                1,
-                2,
-                3,
-                4,
-                5
-            ],
-            "DP-2": [
-                9,
-                10
-            ]
+            "*": 5
         },
         "sort-by-number": true
     },
@@ -198,9 +187,5 @@
         "interval": 30,
         "format": "   {percentage_used}% used on {path}",
         "path": "/"
-    },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10
     }
 }
