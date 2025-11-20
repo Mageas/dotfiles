@@ -32,6 +32,5 @@ input_path = '~/.config/matugen/templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/styles/colors.rasi'
 
 [templates.hyprlock]
-input_path = '~/.config/matugen/templates/hyprland-colors.conf'
-output_path = '/tmp/hyprlock-hyprland-colors.conf'
-post_hook = 'python3 ~/.config/matugen/scripts/generate-hyprlock.py ~/.config/matugen/templates/hyprlock.conf ~/.config/hypr/hyprlock.conf /tmp/hyprlock-hyprland-colors.conf >> /tmp/genimages.log && rm /tmp/hyprlock-hyprland-colors.conf'
+input_path = '~/.config/matugen/templates/hyprlock.conf'
+output_path = '~/.config/hypr/hyprlock.conf'
