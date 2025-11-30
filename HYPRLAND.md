@@ -11,7 +11,7 @@ hyprland, waybar, rofi, hypridle, hyprlock, swww, matugen, hyprpicker, hyprshot,
 ```
 
 ```
-swaync, pipewire, xdg-desktop-portal-hyprland, qt5-qtwayland, qt6-qtwayland, nwg-look, swww, waybar, udiskie, kvantum, hypridle, hyprlock, hyprpicker, wl-clipboard, mate-polkit, adw-gtk3-theme
+swaync, pamixer, pipewire, xdg-desktop-portal-hyprland, qt5-qtwayland, qt6-qtwayland, nwg-look, swww, waybar, udiskie, kvantum, hypridle, hyprlock, hyprpicker, wl-clipboard, mate-polkit, adw-gtk3-theme
 ```
 
 ---

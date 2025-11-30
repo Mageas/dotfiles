@@ -66,6 +66,7 @@ window#waybar {
 #battery,
 #pulseaudio,
 #backlight,
+#custom-starship,
 #custom-dnf,
 #network,
 #clock,
