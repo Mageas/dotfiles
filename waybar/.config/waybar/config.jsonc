@@ -14,7 +14,7 @@
     "modules-right": [
         "tray",
         "custom/dnf",
-        "pulseaudio",
+        "custom/starship",
         "battery",
         "network",
         "power-profiles-daemon"
@@ -86,29 +86,17 @@
         "format-alt": "󰥔 {:%a, %d. %b  %H:%M}",
         "tooltip-format": "{:%Y-%m-%d}"
     },
-    "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-bluetooth": "󰂱 {volume}%",
-        "format-muted": "󰖁",
-        "scroll-step": 1,
+    "custom/starship": {
+        "exec": "sh -c \"if [ $(pamixer --sink alsa_output.pci-0000_0e_00.4.analog-stereo --get-mute) = 'true' ]; then echo '󰖁'; else echo '󰕾 '$(pamixer --sink alsa_output.pci-0000_0e_00.4.analog-stereo --get-volume)'%'; fi\"",
+        "interval": 1,
+        "format": "{}",
         "on-click": "pavucontrol",
         "on-click-right": "easyeffects",
-        "ignored-sinks": [
-            "Easy Effects Sink"
-        ],
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "󰋎",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [
-                "󰖀",
-                "󰕾"
-            ]
-        },
-        "tooltip-format": "Volume: {volume}%"
+        "on-click-middle": "pamixer --sink alsa_output.pci-0000_0e_00.4.analog-stereo --toggle-mute",
+        "on-scroll-up": "pamixer --sink alsa_output.pci-0000_0e_00.4.analog-stereo --increase 5",
+        "on-scroll-down": "pamixer --sink alsa_output.pci-0000_0e_00.4.analog-stereo --decrease 5",
+        "tooltip": true,
+        "tooltip-format": "Sortie: Starship/Matisse (Analog)"
     },
     "network": {
         "interface": "enp6s0",
