@@ -12,21 +12,3 @@ alias yt="yt-dlp --format '(bestvideo[vcodec^=av01][height>=4320][fps>30]/bestvi
 alias sync-bitwarden="rsync --progress -v --update 'login@bitwarden.heartnerds.org:/home/vaultwarden-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Bitwarden"
 alias sync-amandi-nett="rsync --progress -v --update 'root@192.168.0.249:/home/amandi-nett-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Amandi-Nett"
 alias sync-all="echo '  => Syncing Bitwarden'; sync-bitwarden; echo '  => Syncing Amandi-Nett'; sync-amandi-nett"
-
-function sb_up_func() { 
-    if [ -z "$1" ]; then 
-        echo "Usage: sb-up <local:file/folder> [remote:destination]";
-        return 1;
-    fi
-    rsync -aHxv --numeric-ids --progress -v --update --bwlimit=100000 -e "ssh -p 22" "$1" "netflox@yukon.usbx.me:/home/netflox/sync/uploads/${2:-""}";
-}
-alias sb-up='sb_up_func'
-
-function sb_dl_func() { 
-    if [ -z "$1" ]; then 
-        echo "Usage: sb-dl <remote:file/folder> [local:destination]";
-        return 1;
-    fi
-    rsync -aHxv --numeric-ids --progress -v --update --bwlimit=100000 -e "ssh -p 22" "netflox@yukon.usbx.me:/home/netflox/sync/downloads/$1" "${2:-"."}";
-}
-alias sb-dl='sb_dl_func'

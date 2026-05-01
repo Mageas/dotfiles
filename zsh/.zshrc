@@ -26,7 +26,7 @@ fi
 
 # PATH
 export HSA_OVERRIDE_GFX_VERSION=10.3.0
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:$HOME/go/bin
 export EDITOR="vim"
 export GOPATH=$HOME/go
 
@@ -56,3 +56,10 @@ export XCURSOR_SIZE=24
 
 # Starship
 eval "$(starship init zsh)"
+
+# bun completions
+[ -s "/home/mageas/.bun/_bun" ] && source "/home/mageas/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
