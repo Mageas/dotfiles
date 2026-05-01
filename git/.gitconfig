@@ -8,8 +8,11 @@
     defaultBranch = main
 [push]
     default = current
+    followTags = true
 [alias]
     co = checkout
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
     l = ! git lg -n25
     su = status -u
+    ts = tag -s
+    ta = tag -a
