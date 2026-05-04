@@ -1,0 +1,21 @@
+# Thème : bascule auto clair/sombre selon l'apparence système
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+
+# Police (remplace par la tienne, idéalement une Nerd Font)
+font-family = "JetBrainsMono Nerd Font"
+font-size = 13
+
+# Fenêtre
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = true
+background-opacity = 0.95
+
+# Confort
+copy-on-select = clipboard
+confirm-close-surface = false
+mouse-hide-while-typing = true
+
+# Curseur
+cursor-style = bar
+cursor-style-blink = true
