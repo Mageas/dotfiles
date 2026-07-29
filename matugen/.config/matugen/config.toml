@@ -4,8 +4,8 @@ arguments = ["img", "--transition-type", "center", "--transition-fps", "60"]
 set = false
 
 [templates.hyprland]
-input_path = '~/.config/matugen/templates/hyprland-colors.conf'
-output_path = '~/.config/hypr/styles/colors.conf'
+input_path = '~/.config/matugen/templates/hyprland-colors.lua'
+output_path = '~/.config/hypr/styles/colors.lua'
 post_hook = 'hyprctl reload'
 
 [templates.waybar]
