@@ -14,7 +14,8 @@ hl.bind("F9",                   hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind("CTRL + F9",            hl.dsp.exec_cmd("hyprshot -m window"))
 hl.bind("SHIFT + F9",           hl.dsp.exec_cmd("hyprshot -m output"))
 hl.bind(mainMod .. " + T",      hl.dsp.exec_cmd("pkill rofi || walset"))
-hl.bind(mainMod .. " + B",      hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
+hl.bind(mainMod .. " + C",      hl.dsp.exec_cmd("qs ipc call bar calendar"))
+hl.bind(mainMod .. " + B",      hl.dsp.exec_cmd("qs ipc call bar toggle"))
 
 -- System
 hl.bind(mainMod .. " + L",         hl.dsp.exec_cmd("hyprlock"), { description = "Locks Screen with Hyprlock" })
@@ -25,7 +26,7 @@ hl.bind("CTRL + ALT + DELETE",     hl.dsp.exec_cmd("~/.config/hypr/scripts/wlogo
 hl.bind(mainMod .. " + Q",     hl.dsp.window.close())
 hl.bind(mainMod .. " + space", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F",     hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " + R",     hl.dsp.exec_cmd("~/.config/waybar/scripts/launch.sh"))
+hl.bind(mainMod .. " + R",     hl.dsp.exec_cmd("qs ipc call bar reload"))
 
 hl.bind(mainMod .. " + J", function()
     hl.dispatch(hl.dsp.window.cycle_next())      -- Change focus to the next window
