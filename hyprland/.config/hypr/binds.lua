@@ -7,13 +7,13 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- Programs
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(programs.terminal))
 hl.bind(mainMod .. " + E",      hl.dsp.exec_cmd(programs.fileManager))
-hl.bind(mainMod .. " + P",      hl.dsp.exec_cmd("pkill rofi || " .. programs.menu))
+hl.bind(mainMod .. " + P",      hl.dsp.exec_cmd("qs ipc call bar launcher"))
 hl.bind(mainMod .. " + N",      hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + h",      hl.dsp.exec_cmd("hyprpicker -a -n -l"))
 hl.bind("F9",                   hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind("CTRL + F9",            hl.dsp.exec_cmd("hyprshot -m window"))
 hl.bind("SHIFT + F9",           hl.dsp.exec_cmd("hyprshot -m output"))
-hl.bind(mainMod .. " + T",      hl.dsp.exec_cmd("pkill rofi || walset"))
+hl.bind(mainMod .. " + T",      hl.dsp.exec_cmd("qs ipc call bar wallpapers"))
 hl.bind(mainMod .. " + C",      hl.dsp.exec_cmd("qs ipc call bar calendar"))
 hl.bind(mainMod .. " + B",      hl.dsp.exec_cmd("qs ipc call bar toggle"))
 

@@ -11,7 +11,8 @@ post_hook = 'hyprctl reload'
 [templates.waybar]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/waybar/styles/colors.css'
-post_hook = 'pkill -SIGUSR2 waybar'
+# waybar is no longer the bar; tolerate it being absent
+post_hook = 'pkill -SIGUSR2 waybar || true'
 
 [templates.quickshell]
 input_path = '~/.config/matugen/templates/quickshell-colors.json'

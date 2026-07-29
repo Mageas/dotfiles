@@ -18,6 +18,12 @@ ShellRoot {
     // Floating volume indicator, on whichever screen has focus.
     Osd {}
 
+    // Wallpaper + palette picker, opened with Mod+T.
+    WallpaperPicker {}
+
+    // Application launcher, opened with Mod+P or the bar's logo.
+    AppLauncher {}
+
     // `qs ipc call bar <fn>` — the panels and the bar itself are bound to keys
     // in ~/.config/hypr/binds.lua as well as being clickable.
     IpcHandler {
@@ -41,6 +47,17 @@ ShellRoot {
 
         function reload(): void {
             Quickshell.reload(true);
+        }
+
+        function launcher(): void {
+            LauncherState.toggle();
+        }
+
+        function wallpapers(): void {
+            if (WallpaperStore.open)
+                WallpaperStore.close();
+            else
+                WallpaperStore.show();
         }
     }
 }

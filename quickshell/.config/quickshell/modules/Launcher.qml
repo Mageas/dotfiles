@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell
-import ".." // Theme, Motion
+import ".." // Theme, Motion, LauncherState
 
 ModuleButton {
     id: root
@@ -21,5 +21,7 @@ ModuleButton {
         }
     }
 
-    onClicked: Quickshell.execDetached(["/bin/sh", "-c", Quickshell.env("HOME") + "/.config/rofi/launchers/type-1/launcher.sh"])
+    active: LauncherState.open
+
+    onClicked: LauncherState.toggle()
 }
