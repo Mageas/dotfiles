@@ -4,17 +4,23 @@
             "WEBRTC VoiceEngine"
         ],
         "plugins_order": [
-            "rnnoise",
-            "stereo_tools"
+            "rnnoise#0",
+            "stereo_tools#0"
         ],
-        "rnnoise": {
+        "rnnoise#0": {
+            "bypass": false,
+            "enable-vad": false,
             "input-gain": 0.0,
-            "model-path": "",
-            "output-gain": 0.0
+            "model-name": "",
+            "output-gain": 0.0,
+            "release": 20.0,
+            "vad-thres": 50.0,
+            "wet": 0.0
         },
-        "stereo_tools": {
+        "stereo_tools#0": {
             "balance-in": 0.0,
             "balance-out": 0.0,
+            "bypass": false,
             "delay": 0.0,
             "input-gain": 0.0,
             "middle-level": 0.0,
