@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+"""Render the Catppuccin Mocha fallback theme.
+
+Everything visual on this desktop reads a colour file that matugen normally
+writes from the wallpaper. Those files are not configuration you edit — they are
+build output — so a fresh clone has nothing to read and every `@import` fails.
+
+This renders the same matugen templates against a fixed Catppuccin Mocha palette
+instead of an image, so the desktop has a real theme before any wallpaper has
+ever been picked:
+
+    theme-reset               # go back to Catppuccin, whatever is in place now
+    theme-reset --if-missing  # only fill in what does not exist yet
+
+Hyprland runs `--if-missing` at login, which is what makes a fresh clone come up
+themed. Pick a wallpaper (Mod+T) to move to a generated palette.
+
+The renders are deliberately not committed: matugen writes through symlinks, so
+anything stowed at these paths would be rewritten — and show up as a dirty
+working tree — every single time the wallpaper changes.
+"""
+
+import argparse
+import os
+import re
+import subprocess
+import sys
+
+# ── Catppuccin Mocha ────────────────────────────────────────────────────────
+MOCHA = {
+    "rosewater": "#f5e0dc", "flamingo": "#f2cdcd", "pink": "#f5c2e7",
+    "mauve": "#cba6f7", "red": "#f38ba8", "maroon": "#eba0ac",
+    "peach": "#fab387", "yellow": "#f9e2af", "green": "#a6e3a1",
+    "teal": "#94e2d5", "sky": "#89dceb", "sapphire": "#74c7ec",
+    "blue": "#89b4fa", "lavender": "#b4befe", "text": "#cdd6f4",
+    "subtext1": "#bac2de", "subtext0": "#a6adc8", "overlay2": "#9399b2",
+    "overlay1": "#7f849c", "overlay0": "#6c7086", "surface2": "#585b70",
+    "surface1": "#45475a", "surface0": "#313244", "base": "#1e1e2e",
+    "mantle": "#181825", "crust": "#11111b",
+}
+
+
+def rgb(value):
+    value = value.lstrip("#")
+    return tuple(int(value[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def mix(a, b, ratio):
+    """`ratio` of a over b. Catppuccin ships no tonal ramps, so the container
+    and fixed-variant roles are blended rather than invented."""
+    ca, cb = rgb(MOCHA[a]), rgb(MOCHA[b])
+    return "#%02x%02x%02x" % tuple(
+        round(ca[i] * ratio + cb[i] * (1 - ratio)) for i in range(3)
+    )
+
+
+def accent(name, base):
+    """The eight Material roles that every accent colour has to fill."""
+    return {
+        base: MOCHA[name],
+        f"on_{base}": MOCHA["crust"],
+        f"{base}_container": mix(name, "crust", 0.25),
+        f"on_{base}_container": mix(name, "text", 0.6),
+        f"{base}_fixed": mix(name, "text", 0.7),
+        f"{base}_fixed_dim": MOCHA[name],
+        f"on_{base}_fixed": MOCHA["crust"],
+        f"on_{base}_fixed_variant": mix(name, "crust", 0.45),
+    }
+
+
+COLORS = {
+    **accent("mauve", "primary"),
+    **accent("blue", "secondary"),
+    **accent("pink", "tertiary"),
+
+    "error": MOCHA["red"],
+    "on_error": MOCHA["crust"],
+    "error_container": mix("red", "crust", 0.3),
+    "on_error_container": mix("red", "text", 0.6),
+
+    "background": MOCHA["base"],
+    "on_background": MOCHA["text"],
+    "surface": MOCHA["base"],
+    "on_surface": MOCHA["text"],
+    "on_surface_variant": MOCHA["subtext1"],
+    "surface_variant": MOCHA["surface0"],
+    "surface_dim": MOCHA["crust"],
+    "surface_bright": MOCHA["surface2"],
+    "surface_container_lowest": MOCHA["crust"],
+    "surface_container_low": MOCHA["mantle"],
+    "surface_container": MOCHA["base"],
+    "surface_container_high": MOCHA["surface0"],
+    "surface_container_highest": MOCHA["surface1"],
+    "surface_tint": MOCHA["mauve"],
+
+    "outline": MOCHA["overlay0"],
+    "outline_variant": MOCHA["surface1"],
+    "shadow": "#000000",
+    "scrim": "#000000",
+
+    "inverse_surface": MOCHA["text"],
+    "inverse_on_surface": MOCHA["base"],
+    "inverse_primary": mix("mauve", "crust", 0.5),
+
+    "source_color": MOCHA["mauve"],
+}
+
+# ── which template feeds which file ─────────────────────────────────────────
+# The same list as `output_path` in matugen's config.toml: (template, path
+# below $HOME). Keep the two in step when a template is added.
+OUTPUTS = [
+    ("colors.css", ".config/waybar/styles/colors.css"),
+    ("colors.css", ".config/swaync/styles/colors.css"),
+    ("colors.css", ".config/wlogout/styles/colors.css"),
+    ("quickshell-colors.json", ".config/quickshell/styles/colors.json"),
+    ("kitty-colors.conf", ".config/kitty/styles/colors.conf"),
+    ("rofi-colors.rasi", ".config/rofi/styles/colors.rasi"),
+    ("hyprland-colors.lua", ".config/hypr/styles/colors.lua"),
+    ("hyprlock.conf", ".config/hypr/hyprlock.conf"),
+]
+
+
+def render(template):
+    """Just enough of matugen's template language for these six files:
+    a `colors` loop, and {{colors.<role>.default.<field>}} lookups."""
+
+    def field(role, name):
+        value = COLORS[role]
+        if name == "hex":
+            return value
+        if name == "hex_stripped":
+            return value.lstrip("#")
+        if name in ("red", "green", "blue"):
+            return str(rgb(value)[("red", "green", "blue").index(name)])
+        raise KeyError(f"unsupported field {name}")
+
+    def loop(match):
+        # matugen swallows the newline that follows the block tag; without this
+        # every generated file comes out double-spaced.
+        body = match.group(1)
+        if body.startswith("\n"):
+            body = body[1:]
+        out = []
+        for role in sorted(COLORS):
+            chunk = body.replace("{{name}}", role)
+            chunk = chunk.replace("{{value.default.hex_stripped}}", COLORS[role].lstrip("#"))
+            chunk = chunk.replace("{{value.default.hex}}", COLORS[role])
+            out.append(chunk)
+        return "".join(out)
+
+    text = re.sub(r"<\* for name, value in colors \*>(.*?)<\* endfor \*>", loop, template, flags=re.S)
+    text = re.sub(
+        r"\{\{colors\.([a-z_]+)\.default\.([a-z_]+)\}\}",
+        lambda m: field(m.group(1), m.group(2)),
+        text,
+    )
+    # No wallpaper backs this theme. hyprland only stores the name, but
+    # hyprlock would try to load a directory as an image, so drop the whole
+    # `path =` line and let it fall back on the solid `color =` below it.
+    text = re.sub(r"^[ \t]*path[ \t]*=.*\{\{image\}\}.*\n", "", text, flags=re.M)
+    return text.replace("{{image}}", "")
+
+
+def reload_consumers():
+    """matugen's `post_hook`s, minus the bar — it watches its own colour file.
+
+    Every one of these is expected to fail on a machine where the program is
+    not running, so nothing here is checked.
+    """
+    for command in (
+        "hyprctl reload",
+        "kill -SIGUSR1 $(pgrep kitty)",
+        "swaync-client -rs -R",
+    ):
+        subprocess.run(command, shell=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Write the Catppuccin Mocha fallback theme.")
+    parser.add_argument("--if-missing", action="store_true",
+                        help="leave files that already exist alone (used at login)")
+    parser.add_argument("--dots", default=os.path.expanduser("~/.dots"))
+    args = parser.parse_args()
+
+    templates = os.path.expanduser("~/.config/matugen/templates")
+    if not os.path.isdir(templates):
+        templates = os.path.join(args.dots, "matugen/.config/matugen/templates")
+
+    written = 0
+    for template, relative in OUTPUTS:
+        source = os.path.join(templates, template)
+        if not os.path.exists(source):
+            print(f"template introuvable, ignoré : {source}", file=sys.stderr)
+            continue
+
+        destination = os.path.join(os.path.expanduser("~"), relative)
+        if args.if_missing and os.path.exists(destination):
+            continue
+
+        os.makedirs(os.path.dirname(destination), exist_ok=True)
+        with open(destination, "w", encoding="utf-8") as handle:
+            handle.write(render(open(source, encoding="utf-8").read()))
+        print(f"→ {destination}")
+        written += 1
+
+    if written and not args.if_missing:
+        reload_consumers()
+
+
+if __name__ == "__main__":
+    main()

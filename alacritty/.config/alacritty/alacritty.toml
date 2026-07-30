@@ -1,33 +1,35 @@
 [colors.bright]
-black = "#5b6268"
-blue = "#3071db"
-cyan = "#46d9ff"
-green = "#4db5bd"
-magenta = "#a9a1e1"
-red = "#da8548"
-white = "#dfdfdf"
-yellow = "#ecbe7b"
+black = "#585b70"
+blue = "#89b4fa"
+cyan = "#94e2d5"
+green = "#a6e3a1"
+magenta = "#f5c2e7"
+red = "#f38ba8"
+white = "#a6adc8"
+yellow = "#f9e2af"
 
 [colors.cursor]
-cursor = "#528bff"
+cursor = "#f5e0dc"
 text = "CellBackground"
 
 [colors.normal]
-black = "#282c34"
-blue = "#51afef"
-cyan = "#46d9ff"
-green = "#98be65"
-magenta = "#c678dd"
-red = "#ff6c6b"
-white = "#bbc2cf"
-yellow = "#ecbe7b"
+black = "#45475a"
+blue = "#89b4fa"
+cyan = "#94e2d5"
+green = "#a6e3a1"
+magenta = "#f5c2e7"
+red = "#f38ba8"
+white = "#bac2de"
+yellow = "#f9e2af"
 
 [colors.primary]
-background = "#282c34"
-foreground = "#bbc2cf"
+background = "#1e1e2e"
+bright_foreground = "#cdd6f4"
+dim_foreground = "#7f849c"
+foreground = "#cdd6f4"
 
 [colors.selection]
-background = "#3e4451"
+background = "#f5e0dc"
 text = "CellForeground"
 
 [font]

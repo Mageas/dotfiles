@@ -3,6 +3,11 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
 
 hl.on("hyprland.start", function()
+    -- The colour files are matugen build output, so they are absent on a fresh
+    -- clone and every `@import` fails. Lay down Catppuccin Mocha for whatever is
+    -- still missing, before anything reads them. Existing files are left alone.
+    hl.exec_cmd("~/.local/bin/theme-reset --if-missing")
+
     hl.exec_cmd("qs -p ~/.config/quickshell/shell.qml")
     hl.exec_cmd("swaync")
     hl.exec_cmd("hypridle")
