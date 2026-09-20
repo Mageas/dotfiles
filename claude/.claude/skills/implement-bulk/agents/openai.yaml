@@ -1,0 +1,5 @@
+interface:
+  display_name: "Implement (bulk)"
+  short_description: "Work tickets one subagent at a time, pushing after each"
+policy:
+  allow_implicit_invocation: false
