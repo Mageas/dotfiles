@@ -10,7 +10,7 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **Comment on an issue**: `gh issue comment <number> --body "..."`
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
 - **Link a sub-issue**: `gh api --method POST repos/<owner>/<repo>/issues/<parent>/sub_issues -F sub_issue_id=<child-db-id>`, where `<child-db-id>` is the child's numeric database id (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`).
-- **Create a label**: `gh label create "<name>"`. An "already exists" error means there's nothing to do.
+- **Create a label**: `gh label create "<name>" --description "..." --color <hex without #> --force`. `--force` updates the description and color of a label that already exists.
 - **Claim**: `gh issue edit <number> --remove-label "<ready state>" --add-label in-progress --add-assignee @me`
 - **Release**: `gh issue edit <number> --remove-label in-progress --add-label "<ready state>" --remove-assignee @me`, then comment why.
 - **Close as done**: `gh issue edit <number> --remove-label "<open state>"`, then `gh issue close <number> --reason completed --comment "..."`

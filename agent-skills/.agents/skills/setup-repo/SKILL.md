@@ -114,9 +114,26 @@ For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch us
 
 ### 5. Create the labels
 
-On a real tracker, create every label the lifecycle maps to that the tracker lacks, using the create-label command in `docs/agents/issue-tracker.md`. When `wayfinder` is installed, also create `wayfinder:map` and one `wayfinder:<type>` per ticket type (`research`, `prototype`, `grilling`, `task`). For an "other" tracker with no create-label command, give the user the list to create by hand.
+On a real tracker, create every label the lifecycle maps to, using the create-label command in `docs/agents/issue-tracker.md`, and give each one the description and color below. A label that already exists gets its description and color updated. When `wayfinder` is installed, also create the `wayfinder:` labels. For an "other" tracker, set the description and color wherever it supports them; with no create-label command, give the user the list to create by hand.
 
-Done when the tracker's label list shows every one.
+A lifecycle label's description is its **Meaning** in `ticket-lifecycle.md`. The colors follow two rules, so a new label fits in: a state is saturated and a type is pastel, and the hue says who acts next (red: the user, blue: the agent, purple: either, yellow: the reporter, green: someone already on it, grey: no one).
+
+| Label                 | Description                                     | Color    |
+| --------------------- | ----------------------------------------------- | -------- |
+| `needs-triage`        | Meaning                                         | `B60205` |
+| `needs-info`          | Meaning                                         | `FBCA04` |
+| `ready-for-agent`     | Meaning                                         | `0969DA` |
+| `ready-for-human`     | Meaning                                         | `D73A4A` |
+| `in-progress`         | Meaning                                         | `1A7F37` |
+| `wontfix`             | Meaning                                         | `57606A` |
+| `spec`                | Meaning                                         | `F8C8C8` |
+| `wayfinder:map`       | Wayfinder map                                   | `EAEEF2` |
+| `wayfinder:research`  | Wayfinder ticket: AFK research                  | `C5DEF5` |
+| `wayfinder:prototype` | Wayfinder ticket: HITL prototype                | `F8C8C8` |
+| `wayfinder:grilling`  | Wayfinder ticket: HITL decision                 | `F8C8C8` |
+| `wayfinder:task`      | Wayfinder ticket: work that unblocks a decision | `DCCBF7` |
+
+Done when the tracker's label list shows every one with its description and color.
 
 ### 6. Done
 
