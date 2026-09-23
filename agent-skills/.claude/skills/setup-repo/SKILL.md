@@ -26,6 +26,7 @@ Look at the current repo to understand its starting state. Read whatever exists;
 - `docs/adr/` and any `src/*/docs/adr/` directories
 - `docs/agents/`: does this skill's prior output already exist? A `triage-labels.md` there is the older name of `ticket-lifecycle.md`.
 - `.scratch/`: a sign that a local-markdown issue tracker convention is already in use
+- `.out-of-scope/` at the repo root: the older home of `docs/out-of-scope/`
 - Is the `wayfinder` skill installed? (a `wayfinder` skill folder alongside this one, or `wayfinder` in your available skills.) This decides whether step 5 also creates the `wayfinder:*` labels.
 - Monorepo signals: a `pnpm-workspace.yaml`, a `workspaces` field in `package.json`, or a populated `packages/*` with its own `src/`. These are present only in a genuinely large multi-package repo; their absence means single-context, which is almost every repo.
 
@@ -106,7 +107,7 @@ The block:
 [one-line summary of layout: "single-context" or "multi-context"]. See `docs/agents/domain.md`.
 ```
 
-An earlier setup may have left a `### Triage labels` sub-block and a `docs/agents/triage-labels.md`: replace the sub-block with `### Ticket lifecycle` and delete the old file once its mapping lives in `ticket-lifecycle.md`.
+An earlier setup may have left a `### Triage labels` sub-block and a `docs/agents/triage-labels.md`: replace the sub-block with `### Ticket lifecycle` and delete the old file once its mapping lives in `ticket-lifecycle.md`. It may also have left rejected requests in `.out-of-scope/` at the repo root: move them to `docs/out-of-scope/` with `git mv`.
 
 Then write the docs files using the seed templates in this skill folder as a starting point:
 
