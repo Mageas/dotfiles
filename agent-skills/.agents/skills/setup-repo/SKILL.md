@@ -116,7 +116,7 @@ For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch us
 
 On a real tracker, create every label the lifecycle maps to, using the create-label command in `docs/agents/issue-tracker.md`, and give each one the description and color below. A label that already exists gets its description and color updated. When `wayfinder` is installed, also create the `wayfinder:` labels. For an "other" tracker, set the description and color wherever it supports them; with no create-label command, give the user the list to create by hand.
 
-A lifecycle label's description is its **Meaning** in `ticket-lifecycle.md`. The colors follow two rules, so a new label fits in: a state is saturated and a type is pastel, and the hue says who acts next (red: the user, blue: the agent, purple: either, yellow: the reporter, green: someone already on it, grey: no one).
+A lifecycle label's description is its **Meaning** in `ticket-lifecycle.md`. The colors follow two rules, so a new label fits in: a state is saturated and a type is pastel, and the hue says who acts next (red: the user, blue: the agent, purple: either, yellow: the reporter, green: someone already on it, grey: no one). Two types that share a hue take different shades, so each label stays recognizable.
 
 | Label                 | Description                                     | Color    |
 | --------------------- | ----------------------------------------------- | -------- |
@@ -129,8 +129,8 @@ A lifecycle label's description is its **Meaning** in `ticket-lifecycle.md`. The
 | `spec`                | Meaning                                         | `F8C8C8` |
 | `wayfinder:map`       | Wayfinder map                                   | `EAEEF2` |
 | `wayfinder:research`  | Wayfinder ticket: AFK research                  | `C5DEF5` |
-| `wayfinder:prototype` | Wayfinder ticket: HITL prototype                | `F8C8C8` |
-| `wayfinder:grilling`  | Wayfinder ticket: HITL decision                 | `F8C8C8` |
+| `wayfinder:prototype` | Wayfinder ticket: HITL prototype                | `F4B0BC` |
+| `wayfinder:grilling`  | Wayfinder ticket: HITL decision                 | `FDE2E4` |
 | `wayfinder:task`      | Wayfinder ticket: work that unblocks a decision | `DCCBF7` |
 
 Done when the tracker's label list shows every one with its description and color.
