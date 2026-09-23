@@ -12,3 +12,5 @@ alias yt="yt-dlp --format '(bestvideo[vcodec^=av01][height>=4320][fps>30]/bestvi
 alias sync-bitwarden="rsync --progress -v --update 'login@bitwarden.heartnerds.org:/home/vaultwarden-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Bitwarden"
 alias sync-amandi-nett="rsync --progress -v --update 'root@192.168.0.249:/home/amandi-nett-shared/arnaud.gaydamour@protonmail.com*' ~/Documents/VPS/Amandi-Nett"
 alias sync-all="echo '  => Syncing Bitwarden'; sync-bitwarden; echo '  => Syncing Amandi-Nett'; sync-amandi-nett"
+
+alias claudy="CLAUDE_CODE_EFFORT_LEVEL=max CLAUDE_CODE_NO_FLICKER=1 claude"
