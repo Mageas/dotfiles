@@ -1,0 +1,5 @@
+interface:
+  display_name: "Board"
+  short_description: "Show where every spec and ticket stands"
+policy:
+  allow_implicit_invocation: false

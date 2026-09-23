@@ -1,0 +1,5 @@
+interface:
+  display_name: "Accept Spec"
+  short_description: "Validate a built spec and close it"
+policy:
+  allow_implicit_invocation: false
