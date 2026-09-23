@@ -11,7 +11,7 @@ When exploring the codebase, read `CONTEXT.md` (if it exists) to get a clear men
 
 ## Ticket
 
-When the bug comes from a ticket on the tracker, it follows the ticket lifecycle (`docs/agents/ticket-lifecycle.md`, commands in `docs/agents/issue-tracker.md`): claim it before Phase 1, and reference it in the fix commit with `Refs #N` (the ticket file path on a local tracker). If you stop without a fix, release it with a comment listing what you tried.
+When the bug comes from a ticket on the tracker, it follows the ticket lifecycle (`docs/agents/ticket-lifecycle.md`, commands in `docs/agents/issue-tracker.md`): claim it before Phase 1, and reference it in the fix commit as the **Commit references** section of `docs/agents/issue-tracker.md` says (`Refs #N` when it has none). If you stop without a fix, release it with a comment listing what you tried.
 
 ## Redact
 
@@ -140,4 +140,4 @@ Required before declaring done:
 - [ ] All `[DEBUG-...]` instrumentation removed (`grep` the prefix)
 - [ ] Throwaway prototypes deleted (or moved to a clearly-marked debug location)
 - [ ] The hypothesis that turned out correct is stated in the commit / PR message, so the next debugger learns
-- [ ] From a ticket: closed as `done`, with a comment giving the root cause, the fix, and the regression test (or the missing seam)
+- [ ] From a ticket: closed as `done`, with a comment giving the root cause, the fix commit, and the regression test (or the missing seam)

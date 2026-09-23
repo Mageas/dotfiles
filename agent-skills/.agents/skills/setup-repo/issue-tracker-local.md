@@ -10,6 +10,12 @@ Issues and specs for this repo live as markdown files in `.scratch/`.
 - A ticket's state is a `Status:` line near the top of its file, holding one role from `ticket-lifecycle.md`. There is no assignee: `Status: in-progress` is the claim, and closing sets `Status: done` or `Status: wontfix`, with a comment saying why.
 - Comments and conversation history append to the bottom of the file under a `## Comments` heading
 
+## Commit references
+
+**Reference tickets in commits: yes.** _(Set to `no` if this repo's history must carry no ticket references; `/implement`, `/implement-spec` and `/diagnose` read this flag.)_
+
+When set to `yes`, reference the ticket in each commit message with a `Refs <ticket file path>` line. Leave closing keywords like `Closes` out: a ticket closes on the tracker, once its criteria are checked. When set to `no`, commit messages carry no ticket path; the ticket's closing comment names the commit instead.
+
 ## When a skill says "publish to the issue tracker"
 
 Create a new file under `.scratch/<feature-slug>/` (creating the directory if needed).

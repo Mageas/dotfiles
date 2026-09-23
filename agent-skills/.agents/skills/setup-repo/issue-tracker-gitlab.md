@@ -31,6 +31,12 @@ When set to `yes`, MRs run through the same labels and states as issues, using t
 
 Unlike GitHub, GitLab numbers issues and MRs separately, so `#42` is unambiguous once you know which surface the maintainer means.
 
+## Commit references
+
+**Reference tickets in commits: yes.** _(Set to `no` if this repo's history must carry no ticket references; `/implement`, `/implement-spec` and `/diagnose` read this flag.)_
+
+When set to `yes`, reference the ticket in each commit message with a `Refs #<number>` line. Leave closing keywords like `Closes` out: a ticket closes on the tracker, once its criteria are checked. When set to `no`, commit messages carry no ticket number or link; the ticket's closing comment names the commit instead.
+
 ## When a skill says "publish to the issue tracker"
 
 Create a GitLab issue.

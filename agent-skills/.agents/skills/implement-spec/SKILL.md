@@ -24,7 +24,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 3. Create a branch, and a draft PR that references the spec and its tickets with `Refs #N`. Leave closing keywords like `Closes` out: the spec stays open for the user to validate, and each ticket is closed in step 5.
 
-4. Use **implementer subagents** to implement each ticket. Each implementer subagent should work in its own worktree, on its own branch. It claims its ticket before any work and references it in each commit with `Refs #N`.
+4. Use **implementer subagents** to implement each ticket. Each implementer subagent should work in its own worktree, on its own branch. It claims its ticket before any work and references it in each commit as the **Commit references** section of `docs/agents/issue-tracker.md` says (`Refs #N` when it has none).
 
 5. Once an **implementer subagent** completes, merge its work to the PR branch with a **merger subagent**. Then close its ticket: tick the acceptance criteria the implementer verified, and close it as `done` with a comment naming what shipped and the merge commit. A ticket with a criterion unmet stays `in-progress`, with a comment naming what is missing; report it to the user at the end.
 

@@ -23,7 +23,7 @@ Run typechecking regularly, single test files regularly, and the full test suite
 
 Once done, use /review-diff to review the work.
 
-Commit your work to the current branch. Reference the ticket in each commit message with `Refs #N` (the ticket file path on a local tracker). Closing belongs to the next step, so leave closing keywords like `Closes` out.
+Commit your work to the current branch. Reference the ticket in each commit message as the **Commit references** section of `docs/agents/issue-tracker.md` says (`Refs #N` when it has none).
 
 ## Close out
 

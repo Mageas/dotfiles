@@ -48,6 +48,12 @@ Default posture: these skills were designed for GitHub. If a `git remote` points
 
 Record the choice in `docs/agents/issue-tracker.md`. The GitHub and GitLab templates carry a "PRs as a request surface" flag, defaulted **off**. Leave it off and don't raise it: a user who wants external PRs in the triage queue can flip the flag in the file later.
 
+Then ask one question:
+
+> Reference tickets in commit messages? (recommended: **yes**)
+
+Recommend **no** instead on a local tracker whose `.scratch/` is gitignored (`git check-ignore .scratch`), where the reference would point at nothing. Record the answer in the tracker doc's **Commit references** flag. For an "other" tracker, a **yes** also needs the reference format (e.g. `Refs PROJ-123`): ask for it.
+
 **Section B: Lifecycle labels.** Every skill that creates, claims, or closes a ticket reads the lifecycle, so this section runs whichever skills are installed. Skip it on a local-markdown tracker, where a ticket's `Status:` line holds the role name itself.
 
 Ask exactly one question:
