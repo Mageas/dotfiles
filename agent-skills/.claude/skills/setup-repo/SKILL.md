@@ -134,6 +134,9 @@ A lifecycle label's description is its **Meaning** in `ticket-lifecycle.md`. The
 | `in-progress`         | Meaning                                         | `1A7F37` |
 | `wontfix`             | Meaning                                         | `57606A` |
 | `spec`                | Meaning                                         | `F8C8C8` |
+| `ticket`              | Meaning                                         | `DDF4FF` |
+| `bug`                 | Meaning                                         | `E4E7EB` |
+| `enhancement`         | Meaning                                         | `F0F2F4` |
 | `wayfinder:map`       | Wayfinder map                                   | `EAEEF2` |
 | `wayfinder:research`  | Wayfinder ticket: AFK research                  | `C5DEF5` |
 | `wayfinder:prototype` | Wayfinder ticket: HITL prototype                | `F4B0BC` |

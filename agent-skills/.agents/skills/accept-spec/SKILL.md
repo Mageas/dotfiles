@@ -34,4 +34,4 @@ Done when every user story carries a rating and its evidence.
 Present the ratings story by story, then the open tickets and the out-of-scope flags, and ask one question: accept the spec, or not yet?
 
 - **Accept**: close the spec as `done`, with a comment summarising the ratings and naming the branch or PR it shipped on. Any gap the user accepts it with goes in that comment as consciously dropped. Any ticket still open under it closes as `wontfix`, with a comment pointing at the acceptance.
-- **Not yet**: draft one ticket per gap the user wants fixed, in `/to-tickets`' issue template, parented to the spec, with its blocking edges. Confirm the list with the user, publish the tickets as `ready-for-agent`, and comment on the spec which gap became which ticket. The spec stays open for the next `/accept-spec`.
+- **Not yet**: draft one ticket per gap the user wants fixed, in `/to-tickets`' issue template, parented to the spec, with its blocking edges. Confirm the list with the user, publish the tickets with the `ticket` role, as `ready-for-agent`, and comment on the spec which gap became which ticket. The spec stays open for the next `/accept-spec`.

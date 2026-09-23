@@ -19,13 +19,20 @@ Every ticket on this repo's tracker moves through one lifecycle, whichever skill
 | `done`                    | none, the close says it | The work shipped, or the decision was made                         |
 | `wontfix`                 | `wontfix`               | Will not happen: rejected, out of scope, duplicate, or invalidated |
 
-## Specs
+## Types
 
 | Role in mattpocock/skills | Label in our tracker | Meaning                                  |
 | ------------------------- | -------------------- | ---------------------------------------- |
 | `spec`                    | `spec`               | A spec, the parent its tickets hang from |
+| `ticket`                  | `ticket`             | A tracer-bullet slice of a spec or plan  |
+| `bug`                     | `bug`                | Something is broken                      |
+| `enhancement`             | `enhancement`        | New feature or improvement               |
 
 A spec carries the `spec` label and no state: it is the user's to validate, never an agent's to claim. It stays open while its tickets move, and the user closes it as `done` once they have validated it.
+
+A slice cut by `/to-tickets` carries the `ticket` label for life, beside its state while open, so it stays findable once claimed or closed.
+
+`bug` and `enhancement` are `/triage`'s categories: every raw issue it triages carries one of them for life.
 
 When a skill mentions a role (e.g. "apply the AFK-ready role"), use the corresponding label string from these tables. Edit the right-hand column to match whatever vocabulary you actually use.
 

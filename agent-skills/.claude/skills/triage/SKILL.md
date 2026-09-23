@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Move issues on the project issue tracker through a small state machine of triage roles.
 
-Triage works **raw** issues: bug reports and requests that arrived from outside these skills. The issues the skills produced (a `spec`, anything labelled `wayfinder:*`, a spec's sub-issues) already live in the ticket lifecycle and belong to the skills that made them, so keep them out of the attention buckets and leave their roles as they are.
+Triage works **raw** issues: bug reports and requests that arrived from outside these skills. The issues the skills produced (a `spec`, a `ticket`, anything labelled `wayfinder:*`) already live in the ticket lifecycle and belong to the skills that made them, so keep them out of the attention buckets and leave their roles as they are.
 
 If this repo treats external pull requests as a request surface (see the issue-tracker config), triage covers them too: **a PR is an issue with attached code**, using the same roles, same states, and same machine, with a few deltas marked "for a PR" below. Resolve a bare `#42` to an issue or PR per the tracker config.
 
