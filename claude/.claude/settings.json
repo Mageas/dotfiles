@@ -25,5 +25,9 @@
   "tui": "fullscreen",
   "disableBundledSkills": true,
   "disableClaudeAiConnectors": true,
-  "disableArtifact": true
+  "disableArtifact": true,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  }
 }
