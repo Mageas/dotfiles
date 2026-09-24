@@ -1,6 +1,6 @@
 # Ticket Lifecycle
 
-Every ticket on this repo's tracker moves through one lifecycle, whichever skill created it. The skills speak in canonical role names; this file maps each one to the label string used in this repo's tracker. The commands that apply a role, claim a ticket, or close it live in `issue-tracker.md`.
+Every ticket on this repo's tracker moves through one lifecycle, whichever skill created it. The skills speak in canonical role names; this file maps each one to the label string used in this repo's tracker. On a local-markdown tracker, a label is the value of a file's `Type:` or `Status:` line, and `done` is `Status: done`. The commands that apply a role, claim a ticket, or close it live in `issue-tracker.md`.
 
 ## Open states
 
@@ -21,18 +21,27 @@ Every ticket on this repo's tracker moves through one lifecycle, whichever skill
 
 ## Types
 
-| Role in mattpocock/skills | Label in our tracker | Meaning                                  |
-| ------------------------- | -------------------- | ---------------------------------------- |
-| `spec`                    | `spec`               | A spec, the parent its tickets hang from |
-| `ticket`                  | `ticket`             | A tracer-bullet slice of a spec or plan  |
-| `bug`                     | `bug`                | Something is broken                      |
-| `enhancement`             | `enhancement`        | New feature or improvement               |
+| Role in mattpocock/skills | Label in our tracker  | Meaning                                         |
+| ------------------------- | --------------------- | ----------------------------------------------- |
+| `spec`                    | `spec`                | A spec, the parent its tickets hang from        |
+| `ticket`                  | `ticket`              | A tracer-bullet slice of a spec or plan         |
+| `bug`                     | `bug`                 | Something is broken                             |
+| `enhancement`             | `enhancement`         | New feature or improvement                      |
+| `wayfinder:map`           | `wayfinder:map`       | Wayfinder map                                   |
+| `wayfinder:research`      | `wayfinder:research`  | Wayfinder ticket: AFK research                  |
+| `wayfinder:prototype`     | `wayfinder:prototype` | Wayfinder ticket: HITL prototype                |
+| `wayfinder:grilling`      | `wayfinder:grilling`  | Wayfinder ticket: HITL decision                 |
+| `wayfinder:task`          | `wayfinder:task`      | Wayfinder ticket: work that unblocks a decision |
 
 A spec carries the `spec` label and no state: it is the user's to validate, never an agent's to claim. It stays open while its tickets move, and the user closes it as `done` once they have validated it.
 
 A slice cut by `/to-tickets` carries the `ticket` label for life, beside its state while open, so it stays findable once claimed or closed.
 
 `bug` and `enhancement` are `/triage`'s categories: every raw issue it triages carries one of them for life.
+
+`wayfinder:map` marks a `/wayfinder` map, and each of its tickets carries one `wayfinder:` type for life, swapped only when the ticket is re-typed.
+
+An issue carries one type at most.
 
 When a skill mentions a role (e.g. "apply the AFK-ready role"), use the corresponding label string from these tables. Edit the right-hand column to match whatever vocabulary you actually use.
 

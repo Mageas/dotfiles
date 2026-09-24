@@ -18,7 +18,7 @@ Every map and ticket is an issue, so it has a **name**: its title. In everything
 
 ## The Map
 
-The map is a single issue on this repo's issue tracker, labelled `wayfinder:map`, the canonical artifact. Its tickets are child issues of the map.
+The map is a single issue on this repo's issue tracker, of type `wayfinder:map`, the canonical artifact. Its tickets are child issues of the map.
 
 The map is an **index**, not a store. It lists the decisions made and points at the tickets that hold their detail; a decision lives in exactly one place, its ticket, so the map never restates it, only gists it and links.
 
@@ -62,9 +62,9 @@ Each ticket is a **child issue** of the map; the tracker's issue id is its ident
 <the decision or investigation this ticket resolves>
 ```
 
-Each ticket carries a `wayfinder:<type>` label, one of `research`, `prototype`, `grilling`, `task` (see [Ticket Types](#ticket-types)).
+Each ticket carries one type from the ticket lifecycle: `wayfinder:research`, `wayfinder:prototype`, `wayfinder:grilling` or `wayfinder:task` (see [Ticket Types](#ticket-types)). The type is the same string on every tracker: a label on a real tracker, a `Type:` line on a local one.
 
-The tickets follow the repo's **ticket lifecycle**. An open ticket with no state is unclaimed: its `wayfinder:<type>` label is what marks it as the map's. A session **claims** a ticket by setting it `in-progress` and assigning it to the dev driving the map, **first**, before any work, so concurrent sessions skip it. A claim with no activity for 7 days is **stale**: its session has likely died, so it is surfaced to the user, who decides whether to release it.
+The tickets follow the repo's **ticket lifecycle**. An open ticket with no state is unclaimed: its `wayfinder:` type is what marks it as the map's. A session **claims** a ticket by setting it `in-progress` and assigning it to the dev driving the map, **first**, before any work, so concurrent sessions skip it. A claim with no activity for 7 days is **stale**: its session has likely died, so it is surfaced to the user, who decides whether to release it.
 
 Blocking uses the tracker's **native** dependency relationship: essential because it renders the frontier _visually_ in the tracker's own UI, so the human sees what's takeable without opening the map. Only a tracker that lacks native blocking falls back to a body convention. A ticket is **unblocked** when every ticket blocking it is `done`: a `wontfix` blocker never unblocks (see [Out of scope](#out-of-scope)). The **frontier** is the open, unblocked, unclaimed children, the edge of the known.
 
@@ -79,7 +79,7 @@ Every ticket is either **HITL** (human in the loop, worked _with_ a human who sp
 - **Grilling** (HITL): Conversation. The default case. Always call the Skill tool twice, for "grilling" and "domain-modeling".
 - **Task** (HITL or AFK): Manual work that must happen before a _decision_ can be made: nothing to decide, prototype, or research, but the discussion is blocked until it's done. Signing up for a service so its API can be judged, provisioning access, moving data so its shape can be seen. This is the one type that _does_ rather than decides, and it earns its place by unblocking a decision, not by delivering the destination. The agent drives it alone where it can (AFK); otherwise it hands the human a precise checklist (HITL). Resolved when the work is done; the answer records what was done and any resulting facts (credentials location, new URLs, row counts) later tickets depend on.
 
-A type is a guess made while charting. When a ticket's real work turns out to be another type (a grilling that is really research, a research that needs a task first), **re-type** it: swap its `wayfinder:<type>` label before going on, work it as its new type, and note the change in the resolution comment.
+A type is a guess made while charting. When a ticket's real work turns out to be another type (a grilling that is really research, a research that needs a task first), **re-type** it: swap its `wayfinder:` type before going on, work it as its new type, and note the change in the resolution comment.
 
 ## Fog of war
 
@@ -114,7 +114,7 @@ User invokes with a loose idea.
 
 1. **Name the destination.** Call the Skill tool twice, for "grilling" and "domain-modeling", to pin down what this map is finding its way to: the spec, decision, or change. The destination fixes the scope, so it's settled first.
 2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog** (the way to the destination is already clear, the whole journey small enough for one session), you don't need a map. Stop and ask the user how they'd like to proceed.
-3. **Create the map** (label `wayfinder:map`): Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
+3. **Create the map** (type `wayfinder:map`): Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as child issues of the map, then wire blocking edges in a **second pass** (issues need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog: the **Not yet specified** section.
 5. **Fire the research subagents.** For each `research` ticket you just created, spin up a subagent that calls the Skill tool with "research" to resolve it in parallel. Each subagent claims its ticket, captures its findings on a throwaway `research/<name>` branch with a context pointer from the ticket, then records the resolution as in [Work through the map](#work-through-the-map) step 4.
 6. Stop: charting is one session's work; it hand-resolves nothing.

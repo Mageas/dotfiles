@@ -74,6 +74,8 @@ Do NOT close or modify any parent issue.
 
 **Blocked by:** the numbers/titles of the tickets that gate this one, or "None (can start immediately)".
 
+**Type:** ticket
+
 **Status:** ready-for-agent
 
 - [ ] Acceptance criterion 1

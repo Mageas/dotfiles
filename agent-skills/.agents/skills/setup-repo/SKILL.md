@@ -27,7 +27,7 @@ Look at the current repo to understand its starting state. Read whatever exists;
 - `docs/agents/`: does this skill's prior output already exist? A `triage-labels.md` there is the older name of `ticket-lifecycle.md`.
 - `.scratch/`: a sign that a local-markdown issue tracker convention is already in use
 - `.out-of-scope/` at the repo root: the older home of `docs/out-of-scope/`
-- Is the `wayfinder` skill installed? (a `wayfinder` skill folder alongside this one, or `wayfinder` in your available skills.) This decides whether step 5 also creates the `wayfinder:*` labels.
+- Is the `wayfinder` skill installed? (a `wayfinder` skill folder alongside this one, or `wayfinder` in your available skills.) This decides whether the lifecycle carries the `wayfinder:` types.
 - Monorepo signals: a `pnpm-workspace.yaml`, a `workspaces` field in `package.json`, or a populated `packages/*` with its own `src/`. These are present only in a genuinely large multi-package repo; their absence means single-context, which is almost every repo.
 
 ### 2. Present findings and ask
@@ -55,7 +55,7 @@ Then ask one question:
 
 Recommend **no** instead on a local tracker whose `.scratch/` is gitignored (`git check-ignore .scratch`), where the reference would point at nothing. Record the answer in the tracker doc's **Commit references** flag. For an "other" tracker, a **yes** also needs the reference format (e.g. `Refs PROJ-123`): ask for it.
 
-**Section B: Lifecycle labels.** Every skill that creates, claims, or closes a ticket reads the lifecycle, so this section runs whichever skills are installed. Skip it on a local-markdown tracker, where a ticket's `Status:` line holds the role name itself.
+**Section B: Lifecycle labels.** Every skill that creates, claims, or closes a ticket reads the lifecycle, so this section runs whichever skills are installed. Skip it on a local-markdown tracker, where a file's `Type:` and `Status:` lines hold the role names themselves.
 
 Ask exactly one question:
 
@@ -114,14 +114,14 @@ Then write the docs files using the seed templates in this skill folder as a sta
 - [issue-tracker-github.md](./issue-tracker-github.md): GitHub issue tracker
 - [issue-tracker-gitlab.md](./issue-tracker-gitlab.md): GitLab issue tracker
 - [issue-tracker-local.md](./issue-tracker-local.md): local-markdown issue tracker
-- [ticket-lifecycle.md](./ticket-lifecycle.md): lifecycle states and their label mapping
+- [ticket-lifecycle.md](./ticket-lifecycle.md): lifecycle states and their label mapping. Keep its tables and rows whatever the tracker, local-markdown included, so every tracker has the same states and types; only the label strings change. Drop the `wayfinder:` rows when `wayfinder` isn't installed.
 - [domain.md](./domain.md): domain doc consumer rules + layout
 
 For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch using the user's description.
 
 ### 5. Create the labels
 
-On a real tracker, create every label the lifecycle maps to, using the create-label command in `docs/agents/issue-tracker.md`, and give each one the description and color below. A label that already exists gets its description and color updated. When `wayfinder` is installed, also create the `wayfinder:` labels. For an "other" tracker, set the description and color wherever it supports them; with no create-label command, give the user the list to create by hand.
+On a real tracker, create every label the lifecycle maps to, using the create-label command in `docs/agents/issue-tracker.md`, and give each one the description and color below. A label that already exists gets its description and color updated. For an "other" tracker, set the description and color wherever it supports them; with no create-label command, give the user the list to create by hand.
 
 A lifecycle label's description is its **Meaning** in `ticket-lifecycle.md`. The colors follow two rules, so a new label fits in: a state is saturated and a type is pastel, and the hue says who acts next (red: the user, blue: the agent, purple: either, yellow: the reporter, green: someone already on it, grey: no one). Two types that share a hue take different shades, so each label stays recognizable.
 
@@ -137,11 +137,11 @@ A lifecycle label's description is its **Meaning** in `ticket-lifecycle.md`. The
 | `ticket`              | Meaning                                         | `DDF4FF` |
 | `bug`                 | Meaning                                         | `E4E7EB` |
 | `enhancement`         | Meaning                                         | `F0F2F4` |
-| `wayfinder:map`       | Wayfinder map                                   | `EAEEF2` |
-| `wayfinder:research`  | Wayfinder ticket: AFK research                  | `C5DEF5` |
-| `wayfinder:prototype` | Wayfinder ticket: HITL prototype                | `F4B0BC` |
-| `wayfinder:grilling`  | Wayfinder ticket: HITL decision                 | `FDE2E4` |
-| `wayfinder:task`      | Wayfinder ticket: work that unblocks a decision | `DCCBF7` |
+| `wayfinder:map`       | Meaning                                         | `EAEEF2` |
+| `wayfinder:research`  | Meaning                                         | `C5DEF5` |
+| `wayfinder:prototype` | Meaning                                         | `F4B0BC` |
+| `wayfinder:grilling`  | Meaning                                         | `FDE2E4` |
+| `wayfinder:task`      | Meaning                                         | `DCCBF7` |
 
 Done when the tracker's label list shows every one with its description and color.
 

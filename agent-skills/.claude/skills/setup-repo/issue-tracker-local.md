@@ -5,9 +5,9 @@ Issues and specs for this repo live as markdown files in `.scratch/`.
 ## Conventions
 
 - One feature per directory: `.scratch/<feature-slug>/`
-- The spec is `.scratch/<feature-slug>/spec.md`. Its file name carries the `spec` role, so it has no `Status:` line until the user closes it.
+- The spec is `.scratch/<feature-slug>/spec.md`, with `Type: spec` and no `Status:` line until the user closes it.
 - Implementation issues are one file per ticket at `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01`, never a single combined tickets file
-- A ticket's state is a `Status:` line near the top of its file, holding one role from `ticket-lifecycle.md`. There is no assignee: `Status: in-progress` is the claim, and closing sets `Status: done` or `Status: wontfix`, with a comment saying why.
+- A file's type is a `Type:` line near the top, holding one type from `ticket-lifecycle.md`, the same string a real tracker would use as a label (`spec`, `ticket`, `bug`, `enhancement`, `wayfinder:research`, ...). A ticket's state is a `Status:` line under it, holding one role from `ticket-lifecycle.md`. There is no assignee: `Status: in-progress` is the claim, and closing sets `Status: done` or `Status: wontfix`, with a comment saying why.
 - Comments and conversation history append to the bottom of the file under a `## Comments` heading
 
 ## Commit references
@@ -28,8 +28,8 @@ Read the file at the referenced path. The user will normally pass the path or th
 
 Used by `/wayfinder`. The **map** is a file with one **child** file per ticket.
 
-- **Map**: `.scratch/<effort>/map.md` (the Notes / Decisions-so-far / Fog body).
-- **Child ticket**: `.scratch/<effort>/issues/NN-<slug>.md`, numbered from `01`, with the question in the body. A `Type:` line records the ticket type (`research`/`prototype`/`grilling`/`task`); a `Status:` line records its state once claimed (`in-progress`, then `done` or `wontfix`).
+- **Map**: `.scratch/<effort>/map.md`, with `Type: wayfinder:map` and the Notes / Decisions-so-far / Fog body.
+- **Child ticket**: `.scratch/<effort>/issues/NN-<slug>.md`, numbered from `01`, with the question in the body. A `Type:` line records the ticket type (`wayfinder:research`/`wayfinder:prototype`/`wayfinder:grilling`/`wayfinder:task`); a `Status:` line records its state once claimed (`in-progress`, then `done` or `wontfix`).
 - **Blocking**: a `Blocked by: NN, NN` line near the top. A ticket is unblocked when every file it lists is `done`.
 - **Frontier**: scan `.scratch/<effort>/issues/` for files with no `Status:` line yet (neither claimed nor closed) that are unblocked; first by number wins.
 - **Claim**: set `Status: in-progress` and save before any work.
