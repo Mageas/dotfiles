@@ -18,7 +18,7 @@ Fetch every open issue with its labels, assignee, last activity, parent, and blo
 
 Refer to every spec, map, and ticket by its title, with its link inside the name. Oldest first within a section; skip an empty section.
 
-1. **Waiting on you**: specs whose tickets are all `done` (ready for `/accept-spec`); wayfinder maps with no open ticket and an empty **Not yet specified** (ready for their hand-off); `ready-for-human` tickets; the count of issues still in `/triage`'s hands (unlabeled, `needs-triage`, `needs-info`).
+1. **Waiting on you**: specs whose tickets are all `done` (ready for `/accept-spec`); wayfinder maps with no open ticket and an empty **Not yet specified** (ready for their hand-off); `ready-for-human` tickets whose blockers are all `done`; the count of issues still in `/triage`'s hands (unlabeled, `needs-triage`, `needs-info`).
 2. **Claimable now**: per spec, per map, then the standalone ones, the open tickets whose blockers are all `done` and that nobody has claimed, `ready-for-human` ones aside.
 3. **In progress**: every `in-progress` ticket with its assignee and last activity. A claim idle for 7 days is **stale**: mark it.
 4. **Blocked**: every ticket still waiting, with what it waits on. A `wontfix` blocker never clears, so mark those dependents as needing a re-wire.

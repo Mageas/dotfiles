@@ -53,7 +53,8 @@ The maintainer invokes `/triage` and describes what they want in natural languag
 - "Show me anything that needs my attention"
 - "Let's look at #42" (issue or PR)
 - "Move #42 to ready-for-agent"
-- "What's ready for agents to pick up?"
+
+When the maintainer asks what's ready to pick up, send them to `/board`.
 
 ## Show what needs attention
 
@@ -66,10 +67,6 @@ Query the issue tracker and present three buckets, oldest first:
 When PRs are in scope, include external PRs in these buckets and tag each line `[PR]` or `[issue]`. Discovery surfaces only *external* PRs (the tracker config defines who counts as external), so a collaborator's in-flight PR is not triage work. This filter is discovery-only; an explicitly named PR is always triaged regardless of author.
 
 Show counts and a one-line summary per item. Let the maintainer pick.
-
-## Show what's ready
-
-List the open `ready-for-agent` issues (or `ready-for-human`, when asked) whose blockers are all `done`, oldest first, the skills' tickets included. A ticket waiting on a blocker that is open or `wontfix` isn't ready yet, and a claimed one is `in-progress`: both stay off the list. Show a one-line summary per item.
 
 ## Triage a specific issue or PR
 
