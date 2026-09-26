@@ -30,7 +30,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
    - references the ticket in each commit as the **Commit references** section of `docs/agents/issue-tracker.md` says (`Refs #N` when it has none);
    - merges the integration branch tip into its own branch before reporting done.
 
-5. Once an **implementer subagent** completes, merge its work to the integration branch with a **merger subagent**. Then close its ticket: tick the acceptance criteria the implementer verified, and close it as `done` with a comment naming what shipped and the merge commit. A ticket with a criterion unmet stays `in-progress`, with a comment naming what is missing; report it to the user at the end. Name any seam the implementer flagged as unconfirmed in the ticket's comment, and report it to the user at the end.
+5. Once an **implementer subagent** completes, merge its work to the integration branch with a **merger subagent**. Then close its ticket: tick the acceptance criteria the implementer verified, and close it as `done`, naming the merge commit in the closing comment. A ticket with a criterion unmet stays `in-progress`, with a comment naming what is missing; report it to the user at the end. Name any seam the implementer flagged as unconfirmed in the ticket's comment, and report it to the user at the end.
 
    After the first merge, open a draft PR from the integration branch, titled `Spec #<N>: <spec title>` (the spec's title alone on a local tracker), that references the spec and its tickets with `Refs #N`. Before that merge the branch has no commits ahead of the default branch, and a PR can't open. Leave closing keywords like `Closes` out: the spec stays open for the user to validate, and each ticket is closed by this step.
 

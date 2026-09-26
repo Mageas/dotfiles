@@ -24,9 +24,8 @@ Look at the current repo to understand its starting state. Read whatever exists;
 - `AGENTS.md` and `CLAUDE.md` at the repo root: does either exist? Is there already an `## Agent skills` section in either?
 - `CONTEXT.md` and `CONTEXT-MAP.md` at the repo root
 - `docs/adr/` and any `src/*/docs/adr/` directories
-- `docs/agents/`: does this skill's prior output already exist? A `triage-labels.md` there is the older name of `ticket-lifecycle.md`.
+- `docs/agents/`: does this skill's prior output already exist?
 - `.scratch/`: a sign that a local-markdown issue tracker convention is already in use
-- `.out-of-scope/` at the repo root: the older home of `docs/out-of-scope/`
 - Is the `wayfinder` skill installed? (a `wayfinder` skill folder alongside this one, or `wayfinder` in your available skills.) This decides whether the lifecycle carries the `wayfinder:` types.
 - Monorepo signals: a `pnpm-workspace.yaml`, a `workspaces` field in `package.json`, or a populated `packages/*` with its own `src/`. These are present only in a genuinely large multi-package repo; their absence means single-context, which is almost every repo.
 
@@ -61,7 +60,7 @@ Ask exactly one question:
 
 > Do you want to keep the default lifecycle labels? (recommended: **yes**)
 
-The defaults are the roles in [ticket-lifecycle.md](./ticket-lifecycle.md), each label string equal to its name. On **yes**, write them as-is. Only if the user says no, usually because their tracker already uses other names (e.g. `bug:triage` for `needs-triage`), collect the overrides so the skills apply existing labels instead of creating duplicates. When a `triage-labels.md` exists from an earlier setup, its mapping is the starting point.
+The defaults are the roles in [ticket-lifecycle.md](./ticket-lifecycle.md), each label string equal to its name. On **yes**, write them as-is. Only if the user says no, usually because their tracker already uses other names (e.g. `bug:triage` for `needs-triage`), collect the overrides so the skills apply existing labels instead of creating duplicates.
 
 **Section C: Domain docs.** Default to **single-context** (one `CONTEXT.md` + `docs/adr/` at the repo root). This fits almost every repo; write it without asking.
 
@@ -107,8 +106,6 @@ The block:
 [one-line summary of layout: "single-context" or "multi-context"]. See `docs/agents/domain.md`.
 ```
 
-An earlier setup may have left a `### Triage labels` sub-block and a `docs/agents/triage-labels.md`: replace the sub-block with `### Ticket lifecycle` and delete the old file once its mapping lives in `ticket-lifecycle.md`. It may also have left rejected requests in `.out-of-scope/` at the repo root: move them to `docs/out-of-scope/` with `git mv`.
-
 Then write the docs files using the seed templates in this skill folder as a starting point:
 
 - [issue-tracker-github.md](./issue-tracker-github.md): GitHub issue tracker
@@ -121,27 +118,27 @@ For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch us
 
 ### 5. Create the labels
 
-On a real tracker, create every label the lifecycle maps to, using the create-label command in `docs/agents/issue-tracker.md`, and give each one the description and color below. A label that already exists gets its description and color updated. For an "other" tracker, set the description and color wherever it supports them; with no create-label command, give the user the list to create by hand.
+On a real tracker, create every label the lifecycle maps to, using the create-label command in `docs/agents/issue-tracker.md`, and give each one its description and color. A label that already exists gets its description and color updated. For an "other" tracker, set the description and color wherever it supports them; with no create-label command, give the user the list to create by hand.
 
 A lifecycle label's description is its **Meaning** in `ticket-lifecycle.md`. The colors follow two rules, so a new label fits in: a state is saturated and a type is pastel, and the hue says who acts next (red: the user, blue: the agent, purple: either, yellow: the reporter, green: someone already on it, grey: no one). Two types that share a hue take different shades, so each label stays recognizable.
 
-| Label                 | Description                                     | Color    |
-| --------------------- | ----------------------------------------------- | -------- |
-| `needs-triage`        | Meaning                                         | `B60205` |
-| `needs-info`          | Meaning                                         | `FBCA04` |
-| `ready-for-agent`     | Meaning                                         | `0969DA` |
-| `ready-for-human`     | Meaning                                         | `D73A4A` |
-| `in-progress`         | Meaning                                         | `1A7F37` |
-| `wontfix`             | Meaning                                         | `57606A` |
-| `spec`                | Meaning                                         | `F8C8C8` |
-| `ticket`              | Meaning                                         | `DDF4FF` |
-| `bug`                 | Meaning                                         | `E4E7EB` |
-| `enhancement`         | Meaning                                         | `F0F2F4` |
-| `wayfinder:map`       | Meaning                                         | `EAEEF2` |
-| `wayfinder:research`  | Meaning                                         | `C5DEF5` |
-| `wayfinder:prototype` | Meaning                                         | `F4B0BC` |
-| `wayfinder:grilling`  | Meaning                                         | `FDE2E4` |
-| `wayfinder:task`      | Meaning                                         | `DCCBF7` |
+| Label                 | Color    |
+| --------------------- | -------- |
+| `needs-triage`        | `B60205` |
+| `needs-info`          | `FBCA04` |
+| `ready-for-agent`     | `0969DA` |
+| `ready-for-human`     | `D73A4A` |
+| `in-progress`         | `1A7F37` |
+| `wontfix`             | `57606A` |
+| `spec`                | `F8C8C8` |
+| `ticket`              | `DDF4FF` |
+| `bug`                 | `E4E7EB` |
+| `enhancement`         | `F0F2F4` |
+| `wayfinder:map`       | `EAEEF2` |
+| `wayfinder:research`  | `C5DEF5` |
+| `wayfinder:prototype` | `F4B0BC` |
+| `wayfinder:grilling`  | `FDE2E4` |
+| `wayfinder:task`      | `DCCBF7` |
 
 Done when the tracker's label list shows every one with its description and color.
 

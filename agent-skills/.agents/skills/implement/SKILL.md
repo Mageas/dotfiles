@@ -12,7 +12,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 For each ticket you are about to work:
 
-1. Check its blockers. Every one must be `done`; if one isn't, stop and name it to the user.
+1. Check it is unblocked; if it isn't, stop and name the blocker to the user.
 2. Claim it.
 
 Then note the current `HEAD`: it is the fixed point the review compares against.
@@ -32,9 +32,9 @@ Once committed, run /review-diff with the `HEAD` you noted as its fixed point, a
 For each ticket you worked:
 
 1. Tick the acceptance criteria you verified, and only those.
-2. Every criterion ticked: close the ticket as `done`, with a comment saying what shipped, how it was verified, and the commit (SHA and branch).
+2. Every criterion ticked: close the ticket as `done`. The closing comment also says how it was verified and gives the commit SHA.
 3. A criterion unmet: leave the ticket `in-progress`, comment what is missing, and hand back to the user.
 
-Leave the spec open, even after its last ticket: the user validates it. When no open ticket remains under it, tell the user to run `/accept-spec` on it.
+Leave the spec open. When no open ticket remains under it, tell the user to run `/accept-spec` on it.
 
 If you stop before the work is done, release each ticket you claimed.
