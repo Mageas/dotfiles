@@ -33,7 +33,7 @@ Every ticket on this repo's tracker moves through one lifecycle, whichever skill
 | `wayfinder:grilling`      | `wayfinder:grilling`  | Wayfinder ticket: HITL decision                 |
 | `wayfinder:task`          | `wayfinder:task`      | Wayfinder ticket: work that unblocks a decision |
 
-A spec carries the `spec` label and no state: it is the user's to validate, never an agent's to claim. It stays open while its tickets move, and the user closes it as `done` once they have validated it.
+A spec carries the `spec` label and no state: it is the user's to validate, never an agent's to claim. It stays open while its tickets move, and the user validates and closes it with `/accept-spec` once its last ticket is `done`.
 
 A slice cut by `/to-tickets` carries the `ticket` label for life, beside its state while open, so it stays findable once claimed or closed.
 

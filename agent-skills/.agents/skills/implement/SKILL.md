@@ -35,6 +35,6 @@ For each ticket you worked:
 2. Every criterion ticked: close the ticket as `done`, with a comment saying what shipped, how it was verified, and the commit (SHA and branch).
 3. A criterion unmet: leave the ticket `in-progress`, comment what is missing, and hand back to the user.
 
-Leave the spec open, even after its last ticket: the user validates it. When no open ticket remains under it, tell the user the spec is ready for their review.
+Leave the spec open, even after its last ticket: the user validates it. When no open ticket remains under it, tell the user to run `/accept-spec` on it.
 
 If you stop before the work is done, release each ticket you claimed.

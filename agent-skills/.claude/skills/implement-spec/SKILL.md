@@ -38,7 +38,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 7. Once all tickets are complete, run /review-diff on the integration branch, with the commit noted in step 3 as its fixed point. Fix all issues raised by the code review in a single **implementer subagent**.
 
-8. Call the Skill tool with `pr-body` to write the PR body, keeping its `Refs` lines, then mark the PR as ready for review. Leave the spec open, and tell the user both the PR and the spec are ready for their review.
+8. Call the Skill tool with `pr-body` to write the PR body, keeping its `Refs` lines, then mark the PR as ready for review. Leave the spec open, and tell the user the PR is ready for their review and to run `/accept-spec` on the spec, naming the integration branch until the PR merges.
 
 9. Clean up all **implementer subagent** worktrees.
 
