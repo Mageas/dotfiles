@@ -54,6 +54,12 @@ language is set by Replies.
 When a list or value depends on the user's own judgement, ship the mechanism
 empty and offer candidates in the reply.
 
+## Shell
+
+`cp` and `mv` are aliased to `-iv` and `rm` to `-vI`, so they prompt and a
+non-interactive call hangs or aborts. Call them as `command cp`, `command mv`
+and `command rm`.
+
 ## Git
 
 A commit message is one imperative sentence under 72 characters: no body, no
