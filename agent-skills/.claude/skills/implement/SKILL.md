@@ -15,15 +15,17 @@ For each ticket you are about to work:
 1. Check its blockers. Every one must be `done`; if one isn't, stop and name it to the user.
 2. Claim it.
 
+Then note the current `HEAD`: it is the fixed point the review compares against.
+
 ## Build
 
 Use /tdd where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
 
-Once done, use /review-diff to review the work.
-
 Commit your work to the current branch. Reference the ticket in each commit message as the **Commit references** section of `docs/agents/issue-tracker.md` says (`Refs #N` when it has none).
+
+Once committed, run /review-diff with the `HEAD` you noted as its fixed point, and commit any fix it leads to.
 
 ## Close out
 

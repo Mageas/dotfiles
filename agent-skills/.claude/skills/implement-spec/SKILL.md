@@ -22,7 +22,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 2. (optional) Use an **exploration subagent** to conduct any exploration required by the tickets - relevant codebase files or external documentation. Ensure the exploration subagent can save files - it should save its markdown notes in a directory outside the repo, accessible by all future subagents. This lets **implementer subagents** focus on implementation rather than exploration.
 
-3. Create the integration branch.
+3. Create the integration branch, and note the commit it starts from: it is the fixed point of the review in step 7.
 
 4. Hand each frontier ticket to an **implementer subagent**, working in its own worktree on its own branch. Claim the ticket yourself first, and point the subagent at it and at the spec by issue reference, or by absolute path on a local tracker: a worktree holds only tracked files, so a gitignored `.scratch/` is missing from it. Each implementer subagent:
    - confirms its worktree is based on the integration branch before starting, and resets onto it if not;
@@ -36,7 +36,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 6. If this changes the **frontier** of available tickets, kick off more **implementer subagents** on the new tickets, as in step 4. This allows for maximum concurrency.
 
-7. Once all tickets are complete, run /review-diff on the integration branch. Fix all issues raised by the code review in a single **implementer subagent**.
+7. Once all tickets are complete, run /review-diff on the integration branch, with the commit noted in step 3 as its fixed point. Fix all issues raised by the code review in a single **implementer subagent**.
 
 8. Call the Skill tool with `pr-body` to write the PR body, keeping its `Refs` lines, then mark the PR as ready for review. Leave the spec open, and tell the user both the PR and the spec are ready for their review.
 
