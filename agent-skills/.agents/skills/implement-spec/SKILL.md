@@ -22,7 +22,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 2. (optional) Use an **exploration subagent** to conduct any exploration required by the tickets - relevant codebase files or external documentation. Ensure the exploration subagent can save files - it should save its markdown notes in a directory outside the repo, accessible by all future subagents. This lets **implementer subagents** focus on implementation rather than exploration.
 
-3. Create the integration branch, and note the commit it starts from: it is the fixed point of the review in step 7.
+3. Create the integration branch, named `spec/<N>-<slug>`: the spec's issue number, then a kebab-case slug of its title. A local tracker numbers no spec, so there it is `spec/<feature-slug>`. Note the commit it starts from: it is the fixed point of the review in step 7.
 
 4. Hand each frontier ticket to an **implementer subagent**, working in its own worktree on its own branch. Claim the ticket yourself first, and point the subagent at it and at the spec by issue reference, or by absolute path on a local tracker: a worktree holds only tracked files, so a gitignored `.scratch/` is missing from it. Each implementer subagent:
    - confirms its worktree is based on the integration branch before starting, and resets onto it if not;
@@ -32,7 +32,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 5. Once an **implementer subagent** completes, merge its work to the integration branch with a **merger subagent**. Then close its ticket: tick the acceptance criteria the implementer verified, and close it as `done` with a comment naming what shipped and the merge commit. A ticket with a criterion unmet stays `in-progress`, with a comment naming what is missing; report it to the user at the end. Name any seam the implementer flagged as unconfirmed in the ticket's comment, and report it to the user at the end.
 
-   After the first merge, open a draft PR from the integration branch that references the spec and its tickets with `Refs #N`. Before that merge the branch has no commits ahead of the default branch, and a PR can't open. Leave closing keywords like `Closes` out: the spec stays open for the user to validate, and each ticket is closed by this step.
+   After the first merge, open a draft PR from the integration branch, titled `Spec #<N>: <spec title>` (the spec's title alone on a local tracker), that references the spec and its tickets with `Refs #N`. Before that merge the branch has no commits ahead of the default branch, and a PR can't open. Leave closing keywords like `Closes` out: the spec stays open for the user to validate, and each ticket is closed by this step.
 
 6. If this changes the **frontier** of available tickets, kick off more **implementer subagents** on the new tickets, as in step 4. This allows for maximum concurrency.
 
