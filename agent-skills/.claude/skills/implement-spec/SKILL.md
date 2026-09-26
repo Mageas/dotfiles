@@ -27,7 +27,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 4. Hand each frontier ticket to an **implementer subagent**, working in its own worktree on its own branch. Claim the ticket yourself first, and point the subagent at it and at the spec by issue reference, or by absolute path on a local tracker: a worktree holds only tracked files, so a gitignored `.scratch/` is missing from it. Each implementer subagent:
    - confirms its worktree is based on the integration branch before starting, and resets onto it if not;
    - calls the Skill tool with `tdd` to build the ticket, at the seams the spec agreed;
-   - references the ticket in each commit as the **Commit references** section of `docs/agents/issue-tracker.md` says (`Refs #N` when it has none);
+   - references the ticket in each commit as the **Commit references** section of `docs/agents/issue-tracker.md` says;
    - merges the integration branch tip into its own branch before reporting done.
 
 5. Once an **implementer subagent** completes, merge its work to the integration branch with a **merger subagent**. Then close its ticket: tick the acceptance criteria the implementer verified, and close it as `done`, naming the merge commit in the closing comment. A ticket with a criterion unmet stays `in-progress`, with a comment naming what is missing; report it to the user at the end. Name any seam the implementer flagged as unconfirmed in the ticket's comment, and report it to the user at the end.

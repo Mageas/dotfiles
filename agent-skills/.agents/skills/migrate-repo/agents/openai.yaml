@@ -1,0 +1,5 @@
+interface:
+  display_name: "Migrate Repo"
+  short_description: "Bring an older repo setup up to date"
+policy:
+  allow_implicit_invocation: false

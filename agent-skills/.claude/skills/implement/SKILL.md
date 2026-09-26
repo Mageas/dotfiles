@@ -23,7 +23,7 @@ Use /tdd where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
 
-Commit your work to the current branch. Reference the ticket in each commit message as the **Commit references** section of `docs/agents/issue-tracker.md` says (`Refs #N` when it has none).
+Commit your work to the current branch. Reference the ticket in each commit message as the **Commit references** section of `docs/agents/issue-tracker.md` says.
 
 Once committed, run /review-diff with the `HEAD` you noted as its fixed point, and commit any fix it leads to.
 

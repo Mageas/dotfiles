@@ -94,3 +94,5 @@ Off the main flow entirely.
 ## Precondition
 
 **`/setup-repo`**: run before your first engineering flow to configure the issue tracker, ticket lifecycle labels, and doc layout the other skills assume. Custom issue trackers also work.
+
+**`/migrate-repo`**: run on a repo an older `/setup-repo` configured, to bring its setup files, labels and local tickets to the current layout.
