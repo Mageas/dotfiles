@@ -1,7 +1,6 @@
 ---
 name: implement
-description: "Implement a spec or a set of tickets: claim each ticket, build it, review it, commit it, and close it on the tracker."
-disable-model-invocation: true
+description: "Implement a ticket, a set of tickets or a small spec in this session: claim, build, review, commit and close each ticket. Use when the user asks to implement or build a ticket or a spec that fits one context window."
 ---
 
 Implement the work described by the user in the spec or tickets.

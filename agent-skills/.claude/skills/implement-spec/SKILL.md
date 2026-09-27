@@ -1,7 +1,6 @@
 ---
 name: implement-spec
-description: "Implement a specification in code."
-disable-model-invocation: true
+description: "Implement a whole spec from its ticket graph in parallel subagents and deliver it as one PR. Use when the user asks to build a spec end to end."
 ---
 
 You have been provided a spec. This spec should have tickets associated with it, describing how to implement the spec.
