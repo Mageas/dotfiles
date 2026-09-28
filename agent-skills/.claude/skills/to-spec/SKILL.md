@@ -12,11 +12,13 @@ The issue tracker and ticket lifecycle should have been provided to you. If not,
 
 1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
 
-2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
+2. Check the shape. When the feature touches the shape (it adds, splits or merges a module, adds or changes an interface between modules, or adds an I/O dependency) and no Architecture section was agreed in this conversation, stop and suggest `/architect` first.
+
+3. Sketch out the seams at which you're going to test the feature. When an Architecture section was agreed, test through its interfaces: they are settled. Otherwise, existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
 
 Check with the user that these seams match their expectations.
 
-3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `spec` role and no state: the spec is the user's to validate, never an agent's to claim.
+4. Write the spec using the template below, then publish it to the project issue tracker. Apply the `spec` role and no state: the spec is the user's to validate, never an agent's to claim.
 
 <spec-template>
 
@@ -40,14 +42,15 @@ A LONG, numbered list of user stories. Each user story should be in the format o
 
 This list of user stories should be extremely extensive and cover all aspects of the feature.
 
+## Architecture
+
+The Architecture section agreed with `/architect`, copied as it stands, signatures included. Omit it when the feature leaves the shape as it is.
+
 ## Implementation Decisions
 
-A list of implementation decisions that were made. This can include:
+A list of implementation decisions that were made. The interfaces, the reuse and the module changes live in the Architecture section. This can include:
 
-- The modules that will be built/modified
-- The interfaces of those modules that will be modified
 - Technical clarifications from the developer
-- Architectural decisions
 - Schema changes
 - API contracts
 - Specific interactions
@@ -74,4 +77,4 @@ Any further notes about the feature.
 
 </spec-template>
 
-4. If the conversation worked from a `/wayfinder` map, link the map at the top of the spec, then close the map as `done` with a comment linking the spec. The spec now carries the map's decisions forward.
+5. If the conversation worked from a `/wayfinder` map, link the map at the top of the spec, then close the map as `done` with a comment linking the spec. The spec now carries the map's decisions forward.

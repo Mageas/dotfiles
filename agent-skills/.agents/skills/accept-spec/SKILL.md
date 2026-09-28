@@ -27,11 +27,13 @@ For each numbered user story in the spec, find the code that delivers it and the
 
 Then read the spec's **Out of Scope** section and flag anything that shipped anyway.
 
-Done when every user story carries a rating and its evidence.
+When the spec has an **Architecture** section, check the code on that branch against it: each interface exists with its agreed signature and adapters, each factored duplicate lives in one module, each module change is made. Flag each difference as a gap.
+
+Done when every user story carries a rating and its evidence, and every architecture difference is flagged.
 
 ## 3. Decide with the user
 
-Present the ratings story by story, then the open tickets and the out-of-scope flags, and ask one question: accept the spec, or not yet?
+Present the ratings story by story, then the open tickets, the out-of-scope flags and the architecture gaps, and ask one question: accept the spec, or not yet?
 
 - **Accept**: close the spec as `done`, with a comment summarising the ratings and naming the branch or PR it shipped on. Any gap the user accepts it with goes in that comment as consciously dropped. Any ticket still open under it closes as `wontfix`, with a comment pointing at the acceptance.
 - **Not yet**: draft one ticket per gap the user wants fixed, in `/to-tickets`' issue template, parented to the spec, with its blocking edges. Confirm the list with the user, publish the tickets with the `ticket` role, as `ready-for-agent`, and comment on the spec which gap became which ticket. The spec stays open for the next `/accept-spec`.
