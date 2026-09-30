@@ -38,7 +38,8 @@ verified. State failures and doubts as they are.
 ## Code
 
 - Build what was asked, in the surrounding style: no extra abstraction,
-  helper, option or configurability, no guard for a case that cannot happen.
+  helper, option or configurability, no guard for a case that neither the
+  code nor the spec produces.
 - Comment only a non-obvious why.
 - Write comments bare, with no `ponytail:` or other marker prefix.
 
