@@ -62,7 +62,7 @@ Iterate until the user approves the breakdown.
 Publish the approved tickets. **How** depends on the tracker `/setup-repo` configured; the tickets are the same either way, only the shape of the blocking edges changes:
 
 - **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first), laid out as the tracker doc's **File layout** says, with the issue template below as its body: one ticket per file, never a single combined file.
-- **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. When the source is a parent issue, link each ticket to it as a native sub-issue where the platform has them; the ticket's Parent section carries the link either way. Wire blocking edges with the platform's native blocking relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues.
+- **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. When the source is a parent issue, link each ticket to it as a native sub-issue where the platform has them, and wire blocking edges with the platform's native blocking relationship where it has one. The ticket's `Parent:` and `Blocked by:` lines carry both either way.
 
 Either way, apply the `ticket` role, and the `ready-for-agent` role unless instructed otherwise; the tickets are agent-grabbable by construction.
 
@@ -72,9 +72,8 @@ Do NOT close or modify any parent issue.
 
 <issue-template>
 
-## Parent
-
-A reference to the parent issue on the tracker (if the source was an existing issue, otherwise omit this section).
+Parent: a reference to the parent issue on the tracker (omit this line when the source was no issue).
+Blocked by: a reference to each blocking ticket, or `none`.
 
 ## What to build
 
@@ -88,10 +87,6 @@ The part of the spec's Architecture section this ticket builds, signatures inclu
 
 - [ ] Criterion 1
 - [ ] Criterion 2
-
-## Blocked by
-
-- A reference to each blocking ticket, or "None (can start immediately)".
 
 </issue-template>
 

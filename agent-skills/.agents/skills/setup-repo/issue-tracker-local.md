@@ -34,7 +34,7 @@ Blocked by: <NN, NN>
   - `Type:` on every file: one type from `ticket-lifecycle.md`, the same string a real tracker would use as a label (`spec`, `ticket`, `bug`, `enhancement`, `wayfinder:research`, ...).
   - `Status:` once the file has a state: one role from `ticket-lifecycle.md`. A spec and a map carry none. A wayfinder ticket gets one when claimed; every other ticket is created with its ready state.
   - `Blocked by:` on every ticket under an `issues/` directory: the numbers of the tickets that gate it, or `none`.
-- **Body**: the template of the skill that creates the file, as it would go into a real tracker's body, less the two sections the layout already holds: a `## Parent` section is dropped, the file's directory being its parent, and a `## Blocked by` section becomes the `Blocked by:` line.
+- **Body**: the template of the skill that creates the file, as it would go into a real tracker's body, less its opening `Parent:` and `Blocked by:` lines: the file's directory is its parent, and `Blocked by:` joins the field lines, with ticket numbers.
 - **Comments**: each comment and resolution is appended at the bottom under the one `## Comments` heading, created with the first comment, and opens with a `### <YYYY-MM-DD>` heading. Headings inside a comment go below that level (`####`).
 
 ## Commit references

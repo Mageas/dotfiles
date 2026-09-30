@@ -57,6 +57,9 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 Each ticket is a **child issue** of the map; the tracker's issue id is its identity. Its body is the question, sized to one 100K token agent session:
 
 ```markdown
+Parent: <the map>
+Blocked by: <each blocking ticket, or none>
+
 ## Question
 
 <the decision or investigation this ticket resolves>
@@ -66,7 +69,7 @@ Each ticket carries one type from the ticket lifecycle: `wayfinder:research`, `w
 
 The tickets follow the repo's **ticket lifecycle**. An open ticket with no state is unclaimed: its `wayfinder:` type is what marks it as the map's. A session **claims** a ticket by setting it `in-progress` and assigning it to the dev driving the map, **first**, before any work, so concurrent sessions skip it. A claim with no activity for 7 days is **stale**: its session has likely died, so it is surfaced to the user, who decides whether to release it.
 
-Blocking uses the tracker's **native** dependency relationship: essential because it renders the frontier _visually_ in the tracker's own UI, so the human sees what's takeable without opening the map. Only a tracker that lacks native blocking falls back to a body convention. A ticket is **unblocked** when every ticket blocking it is `done`: a `wontfix` blocker never unblocks (see [Out of scope](#out-of-scope)). The **frontier** is the open, unblocked, unclaimed children, the edge of the known.
+Blocking uses the tracker's **native** dependency relationship: essential because it renders the frontier _visually_ in the tracker's own UI, so the human sees what's takeable without opening the map. The ticket's `Blocked by:` line mirrors it, and is the only record on a tracker that lacks native blocking: update it with every edge you wire or re-wire. A ticket is **unblocked** when every ticket blocking it is `done`: a `wontfix` blocker never unblocks (see [Out of scope](#out-of-scope)). The **frontier** is the open, unblocked, unclaimed children, the edge of the known.
 
 The answer isn't part of the body; it's recorded on resolution (see [Work through the map](#work-through-the-map)). Assets created while resolving a ticket are linked from the issue, not pasted in.
 

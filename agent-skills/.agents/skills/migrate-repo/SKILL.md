@@ -42,7 +42,7 @@ Old local formats, and what each becomes:
 | A bold field (`**Type:** ticket`, `**Status:** ...`, `**Blocked by:** ...`) | The plain line (`Type: ticket`), in the field lines under the title              |
 | A ticket under `issues/` with no `Blocked by:`                          | `Blocked by: none`                                                                   |
 | A `**What to build:**` paragraph, or acceptance criteria under no heading | `## What to build` and `## Acceptance criteria` sections                          |
-| A `## Parent` or `## Blocked by` section in a local ticket              | Dropped, or moved to the `Blocked by:` line                                          |
+| A `## Parent` section, `Part of` line or `## Blocked by` section in a local ticket | Dropped, or moved to the `Blocked by:` line                                |
 | An `## Answer` section                                                  | A comment under `## Comments`                                                        |
 
 Lay out each rewritten file as the local tracker template's **File layout** says: title, field lines (`Type:`, `Status:`, `Blocked by:`, one per line, in that order), body, comments.
