@@ -60,6 +60,9 @@ empty and offer candidates in the reply.
 non-interactive call hangs or aborts. Call them as `command cp`, `command mv`
 and `command rm`.
 
+Run scaffolding CLIs (`npx … init`, `create`, `add`) with `</dev/null`, one
+per command, so a prompt fails fast and shows its question.
+
 ## Git
 
 A commit message is one imperative sentence under 72 characters: no body, no
