@@ -77,4 +77,4 @@ Any further notes about the feature.
 
 </spec-template>
 
-5. If the conversation worked from a `/wayfinder` map, link the map at the top of the spec, then close the map as `done` with a comment linking the spec. The spec now carries the map's decisions forward.
+5. If the conversation worked from a `/wayfinder` map, link the map at the top of the spec's body, then close the map as `done` with a comment linking the spec. The spec now carries the map's decisions forward.

@@ -19,7 +19,7 @@ The files, not a version number, say how old the setup is. Check every marker be
 | No `docs/agents/`                                                                                                                                                  | None: the repo was never set up. Tell the user to run `/setup-repo`, and stop |
 | `docs/agents/triage-labels.md`                                                                                                                                     | Its label mapping moves into `ticket-lifecycle.md`, then the file is deleted |
 | `docs/agents/ticket-lifecycle.md` missing, or lacking a table, row or rule of the template                                                                         | Write it from the template                                                  |
-| `docs/agents/issue-tracker.md` behind the template its title names: a section missing (**Commit references**, **Wayfinding operations**), a command missing (**Claim**, **Release**, **Create a label**, **Tick a criterion**), `PRD` where the template says `spec` | Write it from the template                                                  |
+| `docs/agents/issue-tracker.md` behind the template its title names: a section missing (**File layout**, **Commit references**, **Wayfinding operations**), a command missing (**Claim**, **Release**, **Create a label**, **Tick a criterion**), `PRD` where the template says `spec` | Write it from the template                                                  |
 | `docs/agents/domain.md` differing from the template                                                                                                                | Write it from the template                                                  |
 | The `## Agent skills` block in `CLAUDE.md` or `AGENTS.md` differing from `setup-repo`'s, such as a `### Triage labels` sub-block                                   | Update the block                                                            |
 | `.out-of-scope/` at the repo root                                                                                                                                  | `git mv` it to `docs/out-of-scope/`                                         |
@@ -37,8 +37,15 @@ Old local formats, and what each becomes:
 | `Type: research`, `prototype`, `grilling` or `task`                     | The same type prefixed `wayfinder:`                                                  |
 | A `map.md` with no `Type:`                                              | `Type: wayfinder:map`                                                                |
 | `Status: claimed` / `Status: resolved`                                  | `Status: in-progress` / `Status: done`                                               |
+| A file whose first line isn't a `#` title                               | A `#` title on the first line, taken from its first heading, else its file name      |
+| A title opening with the ticket's number (`# 03: <title>`)               | `# <title>`                                                                          |
+| A bold field (`**Type:** ticket`, `**Status:** ...`, `**Blocked by:** ...`) | The plain line (`Type: ticket`), in the field lines under the title              |
+| A ticket under `issues/` with no `Blocked by:`                          | `Blocked by: none`                                                                   |
+| A `**What to build:**` paragraph, or acceptance criteria under no heading | `## What to build` and `## Acceptance criteria` sections                          |
+| A `## Parent` or `## Blocked by` section in a local ticket              | Dropped, or moved to the `Blocked by:` line                                          |
+| An `## Answer` section                                                  | A comment under `## Comments`                                                        |
 
-Write `Type:` and `Status:` as two lines, as the current templates do, even where the old file held both on one.
+Lay out each rewritten file as the local tracker template's **File layout** says: title, field lines (`Type:`, `Status:`, `Blocked by:`, one per line, in that order), body, comments.
 
 Done when every marker is checked and each one found is listed with the files it touches. If none is found, tell the user the repo is current and stop.
 
