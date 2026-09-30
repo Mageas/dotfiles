@@ -137,4 +137,4 @@ The user may run unblocked tickets in parallel, so expect other sessions to be e
 The map is done when no open ticket remains and **Not yet specified** is empty.
 
 1. **Sweep for ADRs.** Read **Decisions so far** and, for each decision that passes domain-modeling's three-criteria test and isn't recorded yet, offer the user an ADR. A decision that lives only in a closed ticket's comment is lost to whoever next reads the code.
-2. **Hand off.** When the destination is a spec, tell the user to run `/to-spec` from the map; it links and closes the map. For any other destination, close the map as `done` yourself, with a comment naming where the destination now lives.
+2. **Hand off.** When the destination is a spec, tell the user to run `/architect` first when it touches the shape (it adds, splits or merges a module, adds or changes an interface between modules, or adds an I/O dependency), then `/to-spec` from the map, in the same context window; `/to-spec` links and closes the map. For any other destination, close the map as `done` yourself, with a comment naming where the destination now lives.
