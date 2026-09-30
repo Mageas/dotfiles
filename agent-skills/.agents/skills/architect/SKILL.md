@@ -1,6 +1,7 @@
 ---
 name: architect
-description: "Design a change's interfaces, reuse and modules in the repo's language, after auditing the code it crosses for duplication and non-idiomatic code, and settle the design with the user before the spec. Use when a change touches the shape (adds, splits or merges a module, adds or changes an interface between modules, or adds an I/O dependency), or when the user asks to design a change's architecture."
+description: "Audit the code a change crosses and design its interfaces, reuse and modules before the spec."
+disable-model-invocation: true
 ---
 
 # Architect
