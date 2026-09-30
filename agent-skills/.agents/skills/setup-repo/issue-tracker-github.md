@@ -13,7 +13,8 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **Create a label**: `gh label create "<name>" --description "..." --color <hex without #> --force`. `--force` updates the description and color of a label that already exists.
 - **Claim**: `gh issue edit <number> --remove-label "<ready state>" --add-label in-progress --add-assignee @me`
 - **Release**: `gh issue edit <number> --remove-label in-progress --add-label "<ready state>" --remove-assignee @me`, then comment why.
-- **Close as done**: `gh issue edit <number> --remove-label "<open state>"`, then `gh issue close <number> --reason completed --comment "..."`
+- **Tick a criterion**: `gh issue view <number> --json body --jq .body > body.md`, turn each verified criterion's `- [ ]` into `- [x]` in `body.md`, then `gh issue edit <number> --body-file body.md`.
+- **Close as done**, every criterion ticked: `gh issue edit <number> --remove-label "<open state>"`, then `gh issue close <number> --reason completed --comment "..."`
 - **Close as wontfix**: `gh issue edit <number> --remove-label "<open state>" --add-label wontfix`, then `gh issue close <number> --reason "not planned" --comment "..."`
 
 Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone.

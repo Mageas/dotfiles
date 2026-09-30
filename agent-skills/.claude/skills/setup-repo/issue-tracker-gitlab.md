@@ -12,8 +12,9 @@ Issues and specs for this repo live as GitLab issues. Use the [`glab`](https://g
 - **Create a label**: `glab label create --name "<name>" --description "..." --color "#<hex>"`. On an "already exists" error, update it instead: `glab api --method PUT "projects/:id/labels/<url-encoded name>" -f description="..." -f color="#<hex>"`.
 - **Claim**: `glab issue update <number> --unlabel "<ready state>" --label in-progress --assignee @me`
 - **Release**: `glab issue update <number> --unlabel in-progress --label "<ready state>" --unassign`, then post a note saying why.
+- **Tick a criterion**: `glab issue view <number> -F json | jq -r .description > body.md`, turn each verified criterion's `- [ ]` into `- [x]` in `body.md`, then `glab issue update <number> --description "$(cat body.md)"`.
 - **Close**: `glab issue close <number>`. `glab issue close` does not accept a closing comment, so post the explanation first with `glab issue note <number> --message "..."`, then close. GitLab records no close reason, so the `wontfix` label carries it:
-  - **Close as done**: `glab issue update <number> --unlabel "<open state>"`, note, close.
+  - **Close as done**, every criterion ticked: `glab issue update <number> --unlabel "<open state>"`, note, close.
   - **Close as wontfix**: `glab issue update <number> --unlabel "<open state>" --label wontfix`, note, close.
 - **Merge requests**: GitLab calls PRs "merge requests". Use `glab mr create`, `glab mr view`, `glab mr note`, etc., the same shape as `gh pr ...` with `mr` in place of `pr` and `note`/`--message` in place of `comment`/`--body`.
 

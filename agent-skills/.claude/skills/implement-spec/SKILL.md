@@ -27,9 +27,14 @@ The ticket lifecycle and the tracker commands should have been provided to you (
    - confirms its worktree is based on the integration branch before starting, and resets onto it if not;
    - calls the Skill tool with `tdd` to build the ticket, at the seams the spec agreed;
    - references the ticket in each commit as the **Commit references** section of `docs/agents/issue-tracker.md` says;
-   - merges the integration branch tip into its own branch before reporting done.
+   - merges the integration branch tip into its own branch before reporting done;
+   - reports each acceptance criterion as verified, saying how, or unmet.
 
-5. Once an **implementer subagent** completes, merge its work to the integration branch with a **merger subagent**. Then close its ticket: tick the acceptance criteria the implementer verified, and close it as `done`, naming the merge commit in the closing comment. A ticket with a criterion unmet stays `in-progress`, with a comment naming what is missing; report it to the user at the end. Name any seam the implementer flagged as unconfirmed in the ticket's comment, and report it to the user at the end.
+5. Once an **implementer subagent** completes:
+   1. Merge its work to the integration branch with a **merger subagent**.
+   2. Tick, in the ticket's body, the acceptance criteria the implementer verified, and only those, with the **Tick a criterion** command of `docs/agents/issue-tracker.md`.
+   3. Every criterion ticked: close the ticket as `done`, naming the merge commit in the closing comment. A criterion unmet: the ticket stays `in-progress`, with a comment naming what is missing; report it to the user at the end.
+   4. Name any seam the implementer flagged as unconfirmed in the ticket's comment, and report it to the user at the end.
 
    After the first merge, open a draft PR from the integration branch, titled `Spec #<N>: <spec title>` (the spec's title alone on a local tracker), that references the spec and its tickets with `Refs #N`. Before that merge the branch has no commits ahead of the default branch, and a PR can't open. Leave closing keywords like `Closes` out: the spec stays open for the user to validate, and each ticket is closed by this step.
 

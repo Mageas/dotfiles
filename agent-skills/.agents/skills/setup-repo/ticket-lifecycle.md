@@ -50,6 +50,7 @@ When a skill mentions a role (e.g. "apply the AFK-ready role"), use the correspo
 - A ticket carries one state at a time. A spec carries none.
 - **Claim** before any other work: set `in-progress` and assign yourself, in one write, so concurrent sessions skip the ticket.
 - **Release** a claim you abandon: set the ready state back, unassign, and comment why.
+- **Tick** each acceptance criterion in the ticket's body once verified. A ticket closes as `done` with every criterion ticked; with one unmet, it stays `in-progress`, with a comment naming what is missing.
 - **Close** as `done` or `wontfix`, always with a comment: what shipped or was decided for `done`, the reason for `wontfix`. Drop the open state on close.
 - `done` means the work is committed on the branch it ships from, merged or not, so tickets that build on each other can follow one another on the same branch. The closing comment names that branch. If the branch is abandoned, **reopen** its tickets in their ready state, with a comment saying why.
 - A ticket is **unblocked** when every ticket blocking it is `done`. A `wontfix` blocker keeps its dependents blocked until each is re-wired or closed itself.
