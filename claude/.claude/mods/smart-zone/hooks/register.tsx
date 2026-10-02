@@ -50,12 +50,13 @@ export const register: Register = on => {
 
   on('ui.render', { component: 'SessionMode' }, async ($, e, next) => {
     const left = SMART_ZONE - ((await read($, tokens)) ?? 0)
-    const modes = e.props.modes.join(' & ')
+    // The modes and what other mods draw in the footer come from beneath.
+    const below = await next(e)
     const { Box, Text } = $.ui.resolve(e)
 
     return (
       <Box columnGap={1}>
-        {modes === '' ? null : <Text dimColor>{modes}</Text>}
+        {below}
         <Text color={tint(left)}>🧠 {Math.round(left / 1000)}k</Text>
       </Box>
     )
