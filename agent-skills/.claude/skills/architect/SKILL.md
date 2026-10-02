@@ -8,13 +8,13 @@ disable-model-invocation: true
 
 Design a change before it is specced: the interfaces it adds or changes, the code it reuses or factors, and the modules it adds or splits. The design is written in the repo's language, as signatures that follow the language's idioms. This skill audits and designs; it changes no code.
 
-Call the Skill tool with "codebase-design" for the vocabulary (module, interface, seam, adapter, depth), and name domain concepts with the `CONTEXT.md` terms.
+Call the Skill tool with "codebase-design" for the vocabulary (module, interface, seam, adapter, depth), and name domain concepts with the `GLOSSARY.md` terms.
 
 A change **touches the shape** when it adds, splits or merges a module, adds or changes an interface between modules, or adds an I/O dependency (clock, disk, network, database, a third-party service). A change that stays inside one module's implementation leaves the shape as it is: tell the user, and hand back to `/to-spec`, or to `/implement` for a ticket.
 
 ## 1. Read
 
-Take the change from the conversation, or from the spec or ticket the user passed. Read `CONTEXT.md` and the ADRs in the area it touches, then the code it crosses: the modules it changes, their callers, and the modules that already do something close to what it needs.
+Take the change from the conversation, or from the spec or ticket the user passed. Read `GLOSSARY.md` and the ADRs in the area it touches, then the code it crosses: the modules it changes, their callers, and the modules that already do something close to what it needs.
 
 ## 2. Audit
 
