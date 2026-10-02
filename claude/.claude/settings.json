@@ -37,6 +37,6 @@
     "pr": ""
   },
   "env": {
-    "CLAUDE_CODE_PLUGIN_DIRS": "~/.dots/claude/.claude/mods/smart-zone"
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/.dots/claude/.claude/mods/smart-zone:~/.dots/claude/.claude/mods/flow-band"
   }
 }
