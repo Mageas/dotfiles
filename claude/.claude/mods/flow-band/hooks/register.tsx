@@ -86,13 +86,16 @@ export const register: Register = on => {
 
     // The modes and what other mods draw in the footer (the smart-zone gauge) come from beneath.
     const below = await next(e)
-    const { Box, Button } = $.ui.resolve(e)
+    const { Box, Button, Text } = $.ui.resolve(e)
     const step = FLOW[current]
 
     return (
       <Box columnGap={1}>
-        {below}
+        {/* First: the desktop footer draws the button ahead of the rest whatever its place in the tree. */}
         <Button key="flow" plain dimColor label={`/${step.next[0]}`} onPress={() => update($, isOpen, value => !value)} />
+        {/* Braille blanks: the desktop footer ignores columnGap and trims spaces, non-breaking ones included. */}
+        <Text>{'\u2800'.repeat(2)}</Text>
+        {below}
       </Box>
     )
   })
