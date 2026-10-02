@@ -17,7 +17,7 @@ test("user can checkout with valid cart", async () => {
 Characteristics:
 
 - Tests behavior users/callers care about
-- Uses public API only
+- Uses the public interface only
 - Survives internal refactors
 - Describes WHAT, not HOW
 - One logical assertion per test

@@ -15,28 +15,7 @@ Don't mock:
 
 ## Designing for Mockability
 
-At system boundaries, design interfaces that are easy to mock:
-
-**1. Use dependency injection**
-
-Pass external dependencies in rather than creating them internally:
-
-```typescript
-// Easy to mock
-function processPayment(order, paymentClient) {
-  return paymentClient.charge(order.total);
-}
-
-// Hard to mock
-function processPayment(order) {
-  const client = new StripeClient(process.env.STRIPE_KEY);
-  return client.charge(order.total);
-}
-```
-
-**2. Prefer SDK-style interfaces over generic fetchers**
-
-Create specific functions for each external operation instead of one generic function with conditional logic:
+At system boundaries, prefer SDK-style interfaces over generic fetchers: create specific functions for each external operation instead of one generic function with conditional logic:
 
 ```typescript
 // GOOD: Each function is independently mockable

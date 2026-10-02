@@ -17,6 +17,18 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 ## Steps
 
+Copy this checklist into your first message and tick each item as you finish it:
+
+```
+Spec progress:
+- [ ] Integration branch created, its start commit noted (step 3)
+- [ ] Every ticket closed as done, or in-progress with what is missing (steps 4-6)
+- [ ] Draft PR opened after the first merge (step 5)
+- [ ] review-diff run from the start commit, its fixes merged (step 7)
+- [ ] PR body written with pr-body, PR marked ready, user told (step 8)
+- [ ] Implementer worktrees removed (step 9)
+```
+
 1. Read the spec and tickets. Read enough to understand the task graph.
 
 2. (optional) Use an **exploration subagent** to conduct any exploration required by the tickets - relevant codebase files or external documentation. Ensure the exploration subagent can save files - it should save its markdown notes in a directory outside the repo, accessible by all future subagents. This lets **implementer subagents** focus on implementation rather than exploration.
@@ -40,7 +52,7 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 6. If this changes the **frontier** of available tickets, kick off more **implementer subagents** on the new tickets, as in step 4. This allows for maximum concurrency.
 
-7. Once all tickets are complete, run /review-diff on the integration branch, with the commit noted in step 3 as its fixed point. Fix all issues raised by the code review in a single **implementer subagent**.
+7. Once all tickets are complete, call the Skill tool with `review-diff` on the integration branch, with the commit noted in step 3 as its fixed point. Fix all issues raised by the code review in a single **implementer subagent**.
 
 8. Call the Skill tool with `pr-body` to write the PR body, keeping its `Refs` lines, then mark the PR as ready for review. Leave the spec open, and tell the user the PR is ready for their review and to run `/accept-spec` on the spec, naming the integration branch until the PR merges.
 

@@ -162,7 +162,7 @@ set_var() {
       return
     fi
   fi
-  SKIPPED+=("GitHub variable $name")
+  SKIPPED+=("GitHub variable $name (set it manually: gh variable set $name)")
   warn "skipped GitHub variable $name, gh not ready; set it later"
 }
 

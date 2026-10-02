@@ -8,11 +8,19 @@ disable-model-invocation: true
 
 `/setup-repo` writes a repo's configuration once, and the skills keep moving after it. This skill finds what an older setup left behind and brings it to the current layout, keeping the choices the repo already made.
 
-The current layout is `setup-repo`'s: its `SKILL.md` and its seed templates, in the `setup-repo` skill folder beside this one. Read them first. If that folder is missing, tell the user to install `setup-repo` and stop.
+The current layout is `setup-repo`'s, in the `setup-repo` skill folder beside this one. Read each of these files in full first:
+
+- [setup-repo's SKILL.md](../setup-repo/SKILL.md): its Section A, its steps 4 and 5, and the `## Agent skills` block;
+- [ticket-lifecycle.md](../setup-repo/ticket-lifecycle.md) and [domain.md](../setup-repo/domain.md);
+- the tracker templates: [issue-tracker-github.md](../setup-repo/issue-tracker-github.md), [issue-tracker-gitlab.md](../setup-repo/issue-tracker-gitlab.md) and [issue-tracker-local.md](../setup-repo/issue-tracker-local.md).
+
+If that folder is missing, tell the user to install `setup-repo` and stop.
 
 ## 1. Detect
 
-The files, not a version number, say how old the setup is. Check every marker below; each one found is a migration to run.
+The files, not a version number, say how old the setup is. Each marker below that is found is a migration to run.
+
+From the repo root, run [scripts/detect.sh](scripts/detect.sh) with `bash`. It checks every marker but the last, and prints one `<file>: <finding>` line per marker found, or `No marker found.`; it exits 1 when there is no `docs/agents/`. On a real tracker, check the last marker yourself against the tracker's label list.
 
 | Marker                                                                                                                                                             | Migration                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |

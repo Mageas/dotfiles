@@ -20,7 +20,7 @@ Take the tickets in blocking order, each after the tickets of the set that block
    - reports each acceptance criterion as verified, saying how, or unmet, and any seam it flagged as unconfirmed.
 3. Close it out as in **Close out**, from the subagent's report. Name any unconfirmed seam in the ticket's comment, and report it to the user at the end.
 
-Once every ticket is closed, run /review-diff with the `HEAD` you noted as its fixed point, and hand its findings to one more implementer subagent, which fixes and commits them.
+Once every ticket is closed, call the Skill tool with `review-diff`, with the `HEAD` you noted as its fixed point, and hand its findings to one more implementer subagent, which fixes and commits them.
 
 ## Before any code
 
@@ -33,13 +33,13 @@ Then note the current `HEAD`: it is the fixed point the review compares against.
 
 ## Build
 
-Use /tdd where possible, at pre-agreed seams.
+Call the Skill tool with `tdd` where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
 
 Commit your work to the current branch. Reference the ticket in each commit message as the **Commit references** section of `docs/agents/issue-tracker.md` says.
 
-Once committed, run /review-diff with the `HEAD` you noted as its fixed point, and commit any fix it leads to.
+Once committed, call the Skill tool with `review-diff`, with the `HEAD` you noted as its fixed point, and commit any fix it leads to.
 
 ## Close out
 

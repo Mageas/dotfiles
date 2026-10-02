@@ -1,6 +1,6 @@
 ---
 name: pr-body
-description: "Use when writing a PR body."
+description: "Write a PR body as a visual summary of the change, before/after evidence and a merge-danger call. Use when writing a PR body."
 metadata:
   credits:
     skill: show-me
@@ -151,7 +151,7 @@ function expandSkill(command: string): string {
 
 #### Guidance
 
-Place each visual next to the short text it supports. Keep only the calls, files, props, states, and boundaries needed to answer the user's current question or the options to resolve the current discussion point.
+Place each visual next to the short text it supports. Keep only the calls, files, props, states, and boundaries needed to show what the PR changes.
 
 You may use one of these, you may use several, it is unlikely you will use all of them. Use your judgement and don't overwhelm the user.
 
@@ -165,6 +165,6 @@ Execution-based evidence is A-tier. Test results, console output. Show the exact
 
 ### Merge Danger
 
-Describe whether it's a one-way or two-way door. You can walk back through two-way doors, but not one-way doors. A PR that is cheap to roll back is lower risk. Changes that involve destructive actions or hard-to-reverse decisions are one-way doors.
+Describe whether it's a one-way or two-way door. Changes that involve destructive actions or hard-to-reverse decisions are one-way doors; a PR that is cheap to roll back is a two-way door, and lower risk.
 
 The blast radius is the potential impact or scope of the changes introduced by this PR. Consider all possibilities. Examples are layout shift, breakages for consumers, mobile responsiveness, etc.
