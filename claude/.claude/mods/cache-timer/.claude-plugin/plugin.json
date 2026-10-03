@@ -1,6 +1,0 @@
-{
-  "name": "cache-timer",
-  "version": "0.1.0",
-  "description": "Shows the time left on the 1h prompt cache since the last main turn, beside the session modes",
-  "types": "./types/index.d.ts"
-}

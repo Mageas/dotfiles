@@ -35,8 +35,5 @@
   "attribution": {
     "commit": "",
     "pr": ""
-  },
-  "env": {
-    "CLAUDE_CODE_PLUGIN_DIRS": "~/.dots/claude/.claude/mods/smart-zone:~/.dots/claude/.claude/mods/flow-band:~/.dots/claude/.claude/mods/cache-timer"
   }
 }

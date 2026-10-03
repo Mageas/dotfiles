@@ -1,6 +1,0 @@
-{
-  "name": "smart-zone",
-  "version": "0.1.0",
-  "description": "Shows the tokens left in the 150k smart zone as a brain gauge beside the session modes",
-  "types": "./types/index.d.ts"
-}
