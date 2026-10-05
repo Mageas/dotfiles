@@ -1,0 +1,6 @@
+{
+  "name": "skill-flow",
+  "version": "0.1.0",
+  "description": "Points out where a skill sits in the workflow when it runs without its usual predecessors",
+  "types": "./types/index.d.ts"
+}

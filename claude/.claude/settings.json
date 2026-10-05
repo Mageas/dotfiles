@@ -37,6 +37,6 @@
     "pr": ""
   },
   "env": {
-    "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/cache-keeper"
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/cache-keeper:~/.claude/mods/skill-flow"
   }
 }
