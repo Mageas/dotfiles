@@ -35,9 +35,14 @@ The solution to the problem, from the user's perspective.
 A LONG, numbered list of user stories. Each user story should be in the format of:
 
 1. As an <actor>, I want a <feature>, so that <benefit>
+   - <acceptance criterion>
+
+Under each story, list its acceptance criteria: observable outcomes that a test, or a person where only a human can judge, checks as met or not. Together they say when the story is delivered.
 
 <user-story-example>
 1. As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending
+   - Each account on the home screen shows its balance, in the account's currency
+   - A balance reflects a settled transaction within a minute
 </user-story-example>
 
 This list of user stories should be extremely extensive and cover all aspects of the feature.

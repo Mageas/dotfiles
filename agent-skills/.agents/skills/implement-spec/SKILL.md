@@ -39,11 +39,12 @@ Spec progress:
 4. Hand each frontier ticket to an **implementer subagent**, working in its own worktree on its own branch. Claim the ticket yourself first, and point the subagent at it and at the spec by issue reference, or by absolute path on a local tracker: a worktree holds only tracked files, so a gitignored `.scratch/` is missing from it. Each implementer subagent:
    - confirms its worktree is based on the integration branch before starting, and resets onto it if not;
    - calls the Skill tool with `tdd` to build the ticket, at the seams the spec agreed;
+   - stops at any part of the spec or ticket the build shows wrong, and reports what it found;
    - references the ticket in each commit as the **Commit references** section of `docs/agents/issue-tracker.md` says;
    - merges the integration branch tip into its own branch before reporting done;
    - reports each acceptance criterion as verified, saying how, or unmet.
 
-5. Once an **implementer subagent** completes:
+5. Once an **implementer subagent** completes, and it reports the spec wrong: leave its work unmerged, bring what it found to the user, and amend the spec as **When the spec is wrong** in [implement's SKILL.md](../implement/SKILL.md) says. Then hand the ticket to a new implementer subagent, as in step 4; the rest of the frontier keeps running meanwhile. Otherwise:
    1. Merge its work to the integration branch with a **merger subagent**.
    2. Tick, in the ticket's body, the acceptance criteria the implementer verified, and only those, with the **Tick a criterion** command of `docs/agents/issue-tracker.md`.
    3. Every criterion ticked: close the ticket as `done`, naming the merge commit in the closing comment. A criterion unmet: the ticket stays `in-progress`, with a comment naming what is missing; report it to the user at the end.

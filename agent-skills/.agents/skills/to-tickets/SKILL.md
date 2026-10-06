@@ -37,6 +37,8 @@ Break the work into **tracer bullet** tickets.
 
 Give each ticket its **blocking edges**: the other tickets that must complete before it can start. A ticket with no blockers can start immediately.
 
+When the source is a spec, give each ticket the numbers of the user stories it delivers, in full or in part, and draw its acceptance criteria from those stories' criteria. Prefactoring delivers none. Done when every user story of the spec is delivered by at least one ticket.
+
 When the spec has an Architecture section, each ticket that builds part of it copies that part into its body under an **Architecture** heading, signatures included: the interfaces it adds, the duplicates it factors, the modules it changes.
 
 **Wide refactors are the exception to vertical slicing.** A **wide refactor** is one mechanical change (rename a column, retype a shared symbol) whose **blast radius** fans across the whole codebase, so a single edit breaks thousands of call sites at once and no vertical slice can land green. Don't force it into a tracer bullet; sequence it as **expand–contract**. First expand: add the new form beside the old so nothing breaks. Then migrate the call sites over in batches sized by blast radius (per package, per directory), each batch its own ticket blocked by the expand, keeping CI green batch to batch because the old form still exists. Finally contract: delete the old form once no caller remains, in a ticket blocked by every migrate batch. When even the batches can't stay green alone, keep the sequence but let them share an integration branch that all block a final integrate-and-verify ticket; green is promised only there.
@@ -47,6 +49,7 @@ Present the proposed breakdown as a numbered list. For each ticket, show:
 
 - **Title**: short descriptive name
 - **Blocked by**: which other tickets (if any) must complete first
+- **User stories**: which of the spec's user stories it delivers, when the source is a spec
 - **What it delivers**: the end-to-end behaviour this ticket makes work
 
 Ask the user:
@@ -78,6 +81,10 @@ Blocked by: a reference to each blocking ticket, or `none`.
 ## What to build
 
 The end-to-end behaviour this ticket makes work, from the user's perspective, not layer-by-layer implementation.
+
+## User stories
+
+The numbers of the parent spec's user stories this ticket delivers, in full or in part, or `none` for prefactoring. Omit this section when the source has no user stories.
 
 ## Architecture
 

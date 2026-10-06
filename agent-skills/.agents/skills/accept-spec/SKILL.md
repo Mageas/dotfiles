@@ -12,24 +12,24 @@ The ticket lifecycle and the tracker commands should have been provided to you (
 
 ## 1. Gather
 
-Fetch the spec the user names, with its comments, and its tickets: its sub-issues on a real tracker, the files under `.scratch/<feature>/issues/` locally. Note every ticket that isn't `done`.
+Fetch the spec the user names, with its comments, and its tickets: its sub-issues on a real tracker, the files under `.scratch/<feature>/issues/` locally. Note every ticket that isn't `done`, and, for each user story, the tickets whose **User stories** section names it: their commits are where its code and tests are.
 
 Find what shipped: the commits that reference the spec or its tickets (`git log --grep`), and the branch or PR each closing comment names. Check the spec against the branch the user says it ships from, the default branch unless told otherwise, and run the full test suite there once.
 
 ## 2. Rate every user story
 
-For each numbered user story in the spec, find the code that delivers it and the test that proves it, then rate it:
+For each numbered user story in the spec, find, for each of its acceptance criteria, the code that delivers it and the test that proves it, then rate the story. A story with no criteria is rated on its own text.
 
-- **Covered**: code and a passing test deliver it. Cite both.
-- **Partial**: part of it is delivered. Say which part is missing.
+- **Covered**: code and a passing test deliver every criterion. Cite both, criterion by criterion.
+- **Partial**: some criteria are delivered. Name the ones missing.
 - **Missing**: nothing delivers it.
-- **Needs your eyes**: only a human can judge it (a UI's feel, an external system). Give the user the steps to check it.
+- **Needs your eyes**: the rest is covered, and a criterion is left that only a human can judge (a UI's feel, an external system). Give the user the steps to check it.
 
 Then read the spec's **Out of Scope** section and flag anything that shipped anyway.
 
 When the spec has an **Architecture** section, check the code on that branch against it: each interface exists with its agreed signature and adapters, each factored duplicate lives in one module, each module change is made. Flag each difference as a gap.
 
-Done when every user story carries a rating and its evidence, and every architecture difference is flagged.
+Done when every criterion of every user story carries its evidence or its gap, every story a rating, and every architecture difference is flagged.
 
 ## 3. Decide with the user
 

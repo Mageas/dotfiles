@@ -16,9 +16,10 @@ Take the tickets in blocking order, each after the tickets of the set that block
 1. Check it is unblocked and claim it, as in **Before any code**.
 2. Hand it to an implementer subagent and wait for its report. Point the subagent at the ticket and its spec rather than restating them. The subagent:
    - calls the Skill tool with `tdd` to build the ticket, at the seams the spec agreed;
+   - stops at any part of the spec or ticket the build shows wrong, and reports what it found;
    - runs the full test suite, then commits to the current branch, referencing the ticket as the **Commit references** section of `docs/agents/issue-tracker.md` says;
    - reports each acceptance criterion as verified, saying how, or unmet, and any seam it flagged as unconfirmed.
-3. Close it out as in **Close out**, from the subagent's report. Name any unconfirmed seam in the ticket's comment, and report it to the user at the end.
+3. Close it out as in **Close out**, from the subagent's report. Name any unconfirmed seam in the ticket's comment, and report it to the user at the end. A report of the spec being wrong goes through **When the spec is wrong** before the next ticket.
 
 Once every ticket is closed, call the Skill tool with `review-diff`, with the `HEAD` you noted as its fixed point, and hand its findings to one more implementer subagent, which fixes and commits them.
 
@@ -40,6 +41,16 @@ Run typechecking regularly, single test files regularly, and the full test suite
 Commit your work to the current branch. Reference the ticket in each commit message as the **Commit references** section of `docs/agents/issue-tracker.md` says.
 
 Once committed, call the Skill tool with `review-diff`, with the `HEAD` you noted as its fixed point, and commit any fix it leads to.
+
+## When the spec is wrong
+
+An open spec is amended, then built. When the build shows part of the spec or ticket wrong (a criterion that cannot hold, an interface that has to differ, a story the spec missed), stop that ticket and bring what you found to the user. Once they decide:
+
+1. Edit the spec's body where the decision changes it: the story, its criteria, the Architecture section or an implementation decision.
+2. Edit the open tickets that copied the changed part.
+3. Comment on the spec what changed and why.
+
+Then resume the ticket against the amended spec.
 
 ## Close out
 
