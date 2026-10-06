@@ -5,7 +5,13 @@ description: "Implement a ticket, a set of tickets or a small spec on the curren
 
 Implement the work described by the user in the spec or tickets.
 
-The ticket lifecycle and the tracker commands should have been provided to you (`docs/agents/ticket-lifecycle.md`, `docs/agents/issue-tracker.md`). If not, tell the user to run `/setup-repo`. Working without a ticket (a spec alone, or the conversation), skip the tracker steps.
+The ticket lifecycle and the tracker commands should have been provided to you (`docs/agents/ticket-lifecycle.md`, `docs/agents/issue-tracker.md`). If not, tell the user to run `/setup-repo`. Working from a spec alone, skip the tracker steps. Working from the conversation, write the ticket first, as in **From the conversation**.
+
+## From the conversation
+
+For a short change, the ticket is the spec. Before any code, draft one from the conversation in the `<issue-template>` of [to-tickets' SKILL.md](../to-tickets/SKILL.md): what to build and its acceptance criteria. Show it to the user, and once they confirm, publish it with the `ticket` role and work it as any ticket.
+
+A change that leaves every observable behaviour as it is (a typo, a rename, a dependency bump) needs no ticket: skip the tracker steps.
 
 ## Several tickets
 
