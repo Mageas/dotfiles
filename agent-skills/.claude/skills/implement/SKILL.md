@@ -23,11 +23,11 @@ Take the tickets in blocking order, each after the tickets of the set that block
 2. Hand it to an implementer subagent and wait for its report. Point the subagent at the ticket and its spec rather than restating them. The subagent:
    - calls the Skill tool with `tdd` to build the ticket, at the seams the spec agreed;
    - stops at any part of the spec or ticket the build shows wrong, and reports what it found;
-   - runs the full test suite, then commits to the current branch, referencing the ticket as the **Commit references** section of `docs/agents/issue-tracker.md` says;
+   - runs typechecking and the test files the ticket touched, not the full suite, then commits to the current branch, referencing the ticket as the **Commit references** section of `docs/agents/issue-tracker.md` says;
    - reports each acceptance criterion as verified, saying how, or unmet, and any seam it flagged as unconfirmed.
 3. Close it out as in **Close out**, from the subagent's report. Name any unconfirmed seam in the ticket's comment, and report it to the user at the end. A report of the spec being wrong goes through **When the spec is wrong** before the next ticket.
 
-Once every ticket is closed, call the Skill tool with `review-diff`, with the `HEAD` you noted as its fixed point, and hand its findings to one more implementer subagent, which fixes and commits them.
+Once every ticket is closed, call the Skill tool with `review-diff`, with the `HEAD` you noted as its fixed point, and hand its findings to one more implementer subagent, which fixes and commits them, then runs the full test suite once and fixes what fails: the only full run of the set.
 
 ## Before any code
 
@@ -42,7 +42,7 @@ Then note the current `HEAD`: it is the fixed point the review compares against.
 
 Call the Skill tool with `tdd` where possible, at pre-agreed seams.
 
-Run typechecking regularly, single test files regularly, and the full test suite once at the end.
+Run typechecking regularly, single test files regularly, and the full test suite once at the end. If the repo has `docs/agents/testing.md`, run the tests as it says.
 
 Commit your work to the current branch. Reference the ticket in each commit message as the **Commit references** section of `docs/agents/issue-tracker.md` says.
 
