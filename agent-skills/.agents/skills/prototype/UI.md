@@ -89,6 +89,8 @@ For sub-shape A (existing page): keep all the existing data fetching above the s
 
 For sub-shape B (new page): the throwaway route under `/prototype/<name>` mounts the same switcher.
 
+When the route already hosts an earlier prototype (this one starts from its throwaway branch, so its variants and switcher are still on the page), freeze it first: render its winning variant in place of its switcher, delete its other variants and its URL param, and build the new variants on top of the winner. The earlier variants stay whole on their own branch. Read the winner from the earlier prototype's captured answer; if none is recorded, ask the user, and while it stays open keep that switcher and say so in the plan line. The page then carries every decision made so far and a single switcher: the current prototype's.
+
 ### 4. Build the floating switcher
 
 A small fixed-position bar at the bottom-centre of the screen with three pieces:
