@@ -10,7 +10,7 @@ sending.
 
 ## Brain
 
-The brain is the git repo at `~/Documents/KBfAI`: notes on the user's
+The brain is the folder at `~/Documents/KBfAI`: notes on the user's
 machines, homelab, servers, seedbox, dev tools and personal dev projects, and
 procedures for recurring tasks such as reading a YouTube video. When a task
 needs information the current project does not hold, look in the brain before
