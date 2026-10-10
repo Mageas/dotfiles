@@ -8,6 +8,25 @@ parentheses or a plain hyphen in its place. The rule is literal, has no
 exception, and holds outside projects too. Scan each message for it before
 sending.
 
+## Brain
+
+The brain is the git repo at `~/Documents/KBfAI`: notes on the user's
+machines, homelab, servers, seedbox, dev tools and personal dev projects, and
+procedures for recurring tasks such as reading a YouTube video. When a task
+needs information the current project does not hold, look in the brain before
+searching or fetching the web:
+
+1. Read `~/Documents/KBfAI/CLAUDE.md`. Its Areas table gives each area's
+   scope and router.
+2. Read the router of the area that covers the task, then the note its line
+   points to. A link in the brain is relative to the file that holds it.
+3. Follow the note, or answer with the fact and the note it came from.
+
+Look elsewhere only when the matching router lists nothing on the subject, or
+when `~/Documents/KBfAI` does not exist on this machine. From another project
+the brain is read only: a fact worth keeping goes to that project's memory,
+and the brain's harvest skill moves it into the brain.
+
 ## Replies
 
 - Reply in the language of the request. In French, use "tu".
